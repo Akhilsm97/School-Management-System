@@ -1,0 +1,169 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mark Upload</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+        .btn{
+   font-size:15px;
+   font-weight:bold;
+   text-align:center;
+   font-family:Arial;
+}
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 45px;
+      margin-left:400px;
+      margin-top:20px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+    </style>
+</head>
+
+<body>
+        <h2 class="btn  animate-charcter">Mark Attendance Here !</h2>
+
+        <div class="container-fluid" >
+            <div class="row" style="width:100%;">
+                <div class="col-md-2" style="margin-top:250px;">
+                    <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="width:100%;margin-top:5%;">
+                        <p style="align:left; margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_1}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_2}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_3}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_4}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_5}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_6}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_7}}</p>
+                        <p style="align:left;margin-left:15px; font-size:18px; font-weight:bold;">{{subjects.Subject_8}}</p>
+                    </div>
+                </div>
+                <div class="col-md-8" style="width:80%">
+
+                    <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="width:100%;margin-top:5%;">
+          <form method="post" action="/upload_mark/{{stud_details.username}}/{{approve_stud.reg_no}}">
+              {% csrf_token%}
+
+            <div class="row" style="margin:20px;">
+                <div class="col-md-3 shadow" style="border:solid lightgrey 2px;margin:20px;height:300px;">
+                    <img src="{{stud_details.profie_pic.url}}" width="120px; height:120px;" style="margin:15px;border-radius:50%; padding-left:10px;" class="img-thumbnail">
+                    <p style="margin-left:32px; font-size:20px;  font-weight:bold;">{{stud_details.username}}</p>
+                    <p style="margin-left:32px; font-size:20px;  font-weight:bold;">{{approve_stud.reg_no}}</p>
+                </div>
+
+                 <div class="col-md-7" style="border:solid lightgrey 2px;margin:20px;width:65%;">
+                   <div class="row" style="margin:10px;">
+                       <div class="col-md-4" style="margin:10px; width:45%;">
+                        <label style="margin-left: 60px;font-size:18px; font-weight:bold;">Exam</label>
+                       </div>
+                        <div class="col-md-4" style="margin:10px; width:45%;">
+                            <label style="margin-left: 60px;font-size:18px; font-weight:bold;">Date</label>
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <select name="exam_name" class="form-control" style="text-align:center;">
+                                <option value="">--Select Exam--</option>
+                                <option value="Periodic Test 1">Periodic Test 1</option>
+                                <option value="Periodic Test 2">Periodic Test 2</option>
+                                <option value="Mid Term 1">Mid Term 1</option>
+                                <option value="Periodic Test 3">Periodic Test 3</option>
+                                <option value="Periodic Test 4">Periodic Test 4</option>
+                                <option value="Mid Term 2">Mid Term 2</option>
+                            </select>
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <input type="date" name="exam_date" class="form-control" required>
+                       </div>
+
+
+                       <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="english_mark" class="form-control" placeholder="English Mark">
+                       </div>
+                        <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="malayalam_mark" class="form-control" placeholder="Malayalam Mark">
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <input type="text" name="science_mark" class="form-control" placeholder="Science Mark">
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                           <input type="text" name="maths_mark" class="form-control" placeholder="Mathematics Mark">
+                       </div>
+
+                       <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="comp_mark" class="form-control" placeholder="Computer Mark">
+                       </div>
+                        <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="Social_mark" class="form-control" placeholder="Social Science Mark">
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <input type="text" name="hindi_mark" class="form-control" placeholder="Hindi Mark">
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <input type="text" name="gk_mark" class="form-control" placeholder="GK Mark">
+                       </div>
+
+
+                       <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="physics_mark" class="form-control" placeholder="Physics Mark">
+                       </div>
+                        <div class="col-md-4" style="margin:30px 10px 10px 10px; width:45%;">
+                            <input type="text" name="chemistry_mark" class="form-control" placeholder="Chemistry Mark">
+                       </div>
+                       <div class="col-md-4" style="margin:1px 10px 10px 10px; width:45%;">
+                            <input type="text" name="biology_mark" class="form-control" placeholder="Biology Mark">
+                       </div>
+
+
+
+                        <button type="submit" name="submit" class="btn btn-success">Save Changes</button>
+
+                   </div>
+                </div>
+            </div>
+          </form>
+
+        </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

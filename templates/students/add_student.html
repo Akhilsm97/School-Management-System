@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student Details!</title>
+    <link href="{% static 'add_student/css/Bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'add_student/css/Add_Stud/add_stud.css' %}" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{% static 'add_student/js/bootstrap.bundle.min.js' %}" ></script>
+    <script src="{% static 'add_student/js/bootstrap.min.js' %}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+</head>
+<body>
+
+           <div class="container container_style">
+             <form method="post" action="/add_student/" enctype="multipart/form-data">
+                 {% csrf_token %}
+               <h3 class="main_header">Student Registration</h3>
+               <div class="row row_style">
+                   <div class="col-md-4">
+                        
+                       <div class="container con">
+                                  <img id="file-ip-1-preview" style="width:150px; height:220px; margin-left:-26px; margin-top:-3px;">
+                                     <label for="file-ip-1" class="up_label"><img src="Images/upload.png" class="up_img">Upload Image</label>
+                                    <input type="file" id="file-ip-1" name="profie_pic" accept="image/*" onchange="showPreview(event);" hidden>
+                       </div>
+                       
+                   </div>
+                      <div class="col-md-4 sec_div">
+                          
+                              
+                          <div class="sec_inside_div">
+                             <label for="" class="" > First Name</label>&nbsp;&nbsp;&nbsp;
+                              <input type="text" name="stud_name1" class="form-control input_sty" required >
+                          </div>
+                           <div class="sec_inside_div">
+                             <label for="" class="" > Date of Birth</label>
+                              <input type="date" name="dob" class="form-control input_sty" required >
+                          </div>
+                          <div class="sec_inside_divs">
+                          <label for="" class="" > Gender</label>&nbsp;&nbsp;
+                              <input type="radio" id="html" name="Gender" value="Male" class="gender_style" >
+                              <label for="html">MALE</label><br>
+                              <input type="radio" id="html" name="Gender" value="Female" class="gender_style1" >
+                              <label for="html">FEMALE</label><br>
+                              <input type="radio" id="html" name="Gender" value="Others" class="gender_style1" >
+                              <label for="html">OTHERS</label>
+                          </div>
+                           
+
+                      </div>
+
+
+                      <div class="col-md-4 third_div">
+                              
+                        <div class="third_inside_div">
+                            <label for="" class=""> Last Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="stud_name2" class="form-control input_stys" required >
+                         </div>
+                              <div class="third_inside_div">
+                            <label for="" class="">Siblings Details</label>
+                            <input type="text" name="siblings" class="form-control input_stys" required >
+                         </div>
+                           
+                     </div>
+
+               </div>
+               <hr>
+
+               <!--------------------Parent Information ----------->
+
+               <h5 class="parents_info_header">Parents Information</h5>
+
+               <div class="row parent_row">
+                   <div class="col-md-6">
+                       
+                           
+                        <div class="parent_inside_div">
+                             <label for="" class="">Father's Name</label>
+                             <input type="text" name="father_name1" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Last Name</label>
+                             <input type="text" name="father_name2" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                   <div class="parent_inside_div">
+                             <label for="" class="">Occupation</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="father_occu" class="form-control father_input" required style="width:800px;margin-bottom:20px; ">
+                   </div>
+
+
+                   <div class="col-md-6">
+
+                        <div class="parent_inside_div">
+                             <label for="" class="">Phone no</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="father_mob" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="father_mail" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                        
+                            
+                   <div class="parent_inside_div" style="margin-bottom:50px;">
+                             <label for="" class="">Qualification</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="father_quali" class="form-control father_input" required style="width:800px;margin-bottom:20px; ">
+                   </div>
+                       
+                                    <!------------ Mother Information---------->
+
+                   <div class="col-md-6">
+                       
+                           
+                        <div class="parent_inside_div">
+                             <label for="" class="">Mother's Name</label>
+                             <input type="text" name="mother_name1" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Last Name</label>
+                             <input type="text" name="mother_name2" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                       
+                           
+                   <div class="parent_inside_div">
+                             <label for="" class="">Occupation</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="mother_occu" class="form-control father_input" required style="width:800px;margin-bottom:20px; ">
+                   </div>
+                      
+
+                   <div class="col-md-6">
+                       
+                           
+                        <div class="parent_inside_div">
+                             <label for="" class="">Phone no</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="mother_mob" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="mother_mail" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                          
+                   <div class="parent_inside_div">
+                             <label for="" class="">Qualification</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="mother_quali" class="form-control father_input" required style="width:800px; ">
+                   </div>
+                     
+               </div>
+
+               <hr>
+
+               <!--------------------Parent Information ----------->
+
+               <h5 class="parents_info_header">Communication Details</h5>
+
+               <div class="row comm_row">
+                   
+                       
+                   <div class="col-md-12">
+                       <div class="comm_inside_div">
+                             <label for="" class="">Address</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="address" class="form-control address_input"></textarea>
+                        </div>
+                   </div>
+                  
+
+                    <div class="col-md-4">
+                       
+                           
+                        <div class="parent_inside_div">
+                             <label for="" class="">Pin Code</label>
+                             <input type="text" name="pin_code" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">City</label>
+                             <input type="text" name="city" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">State</label>
+                             <input type="text" name="state" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+
+
+               </div>
+                  <hr>
+               <!--------------------Previous Acedameic Details----------->
+
+               <h5 class="parents_info_header">Previous Acedameic Details</h5>
+
+
+               <div class="row ins_row">
+                       
+                   <div class="preivious_intituition">
+                       <label for="" class="">Instituition Name</label>
+                       <input type="text" name="insti_name" class="form-control ins_input" required>
+                   </div>
+
+                   <div class="preivious_intituition">
+                       <label for="" class="">Address</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <textarea name="prev_address" class="form-control ins_inputs" required></textarea>
+                   </div>
+                  
+
+                  <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Start Date</label>
+                             <input type="date" name="start_date" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">End Date</label>
+                             <input type="date" name="end_date" class="form-control father_input" required>
+                        </div>
+                         
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">CGPA %</label>
+                             <input type="text" name="cgpa" class="form-control father_input" placeholder="Percentage" required>
+                        </div>
+                         
+                   </div>
+                        
+                            
+                   <div class="parent_inside_div">
+                             <label for="" class="">Reason for leaving last School?</label>
+                               <textarea name="reason" class="form-control ins_inputs" required></textarea>
+                        </div>
+                       
+               </div>
+
+
+               <hr>
+
+               <!--------------------Interest ----------->
+                   <h5 class="parents_info_header">Interest</h5>
+
+
+                  <div class="row interest_row">
+                      <div class="col-md-6">
+                       
+                           
+                        <div class="parent_inside_div">
+                             <label for="" class="">Hobbies</label>
+                            <textarea name="hobbies" class="form-control ins_inputs" required></textarea>
+                        </div>
+                          
+                      </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Skills</label>
+                             <textarea name="skills" class="form-control ins_inputs" required></textarea>
+                        </div>
+                         
+                   </div>
+                      <div class="col-md-6" style="margin-top:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Blood Group</label>
+                             <input type="text" name="blood_group" class="form-control ins_input" required>
+                        </div>
+                         
+                   </div>
+                  </div>
+
+                                   <!--------------------Admission Details ----------->
+                        <hr>
+                            <h5 class="parents_info_header">Class in Which Admission is Sought</h5>
+                 <div class="row admission_row">
+                            <div class="col-md-6">
+                         
+                             
+                        <div class="parent_inside_div">
+                             <label for="" class="">Department</label>
+                                <select name="department" class="form-control ins_inputss">
+                                    <option name="">Select one</option>
+                                    <option name="lower" value="Lower primary">Lower primary(I-IV)</option>
+                                     <option name="upper" value="Upper primary">Upper primary(V-VII)</option>
+                                     <option name="secondary" value="Secondary">Secondary(VIII-X)</option>
+                                    <option name="higher_secondary" value="Higher Secondary">Higher Secondary(XI-XII)</option>
+                                </select>
+                        </div>
+                          
+                      </div>
+
+                    <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                              
+                       <div class="parent_inside_div">
+                             <label for="" class="">Class</label>
+                              <input type="text" name="classes" class="form-control ins_input" required>
+                        </div>
+                         
+                    </div>
+                 </div>
+
+                      
+                      <input type="submit" name="submit" value="Submit" class="btn btn-primary btn">
+                  </form>
+           </div>
+
+
+<script type="text/javascript">
+  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_view.css' %}">
+    <style>
+       .glow-on-hover1 {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    text-decoration:none;
+    font-weight:bold;
+     padding:10px;
+     color:white;
+}
+
+.glow-on-hover1:before {
+    content: 'View Details';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 1.5;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover1:active {
+   color:white;
+}
+
+.glow-on-hover1:active:after {
+    background: transparent;
+    color:white;
+}
+
+.glow-on-hover1:hover:before {
+    opacity: 1.5;
+
+}
+
+.glow-on-hover1:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    color:white;
+    opacity: 1.5;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+    </style>
+</head>
+
+<body>
+      <!------------------------------table data---------------------------->
+      <br>
+<a class="glow-on-hover1" href="/admins" title="Twitter" style="margin-left:1200px;padding-top:10px;"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="menu-title sr-only" >Back</span></a>
+<div class="container-fluid">
+	<div class="row">
+    {% for adds in adds %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{adds.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{adds.username}}
+                       <p>{{adds.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{adds.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+
+
+
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

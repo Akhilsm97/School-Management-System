@@ -1,0 +1,938 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'admin/teachers/pagination.css' %}">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+      <title>Facalties Message</title>
+  </head>
+  <body>
+  <a href="/faculty_corner/">Back</a>
+      <h3 class="text-center ml-5" style="font-family:Rockwell;font-weight:bold; font-size:35px; margin:55px;">Facalties</h3>
+
+      <div class="container">
+          <div class="row">
+            {% if cls == 'Xl A' or cls == 'Xl B' or cls == 'Xll A' or cls == 'Xll B' %}
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if eng_teacher %}
+                      <img src="{{eng.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{eng.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                    {% else %}
+                       <p style="color:red;font-family:Rockwell;font-weight:bold;">{{eng}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                     {% if mal_teacher %}
+                      <img src="{{mal.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{mal.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_2"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                        <p style="color:red;font-family:Rockwell;font-weight:bold;">{{mal}}</p>
+                        <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                      {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                     {% if maths_teacher %}
+                      <img src="{{maths.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{maths.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_3"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {%else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{maths}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if comp_teacher %}
+                      <img src="{{computer.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{computer.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">COMPUTER</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_4"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{computer}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">COMPUTER</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if sc_teacher %}
+                      <img src="{{sci.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{sci.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">PHYSICS</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_5"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{sci}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">PHYSICS</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if ch_teacher %}
+                      <img src="{{chemistry.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{chemistry.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">CHEMISTRY</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_6"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{chemistry}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">CHEMISTRY</p>
+                    {% endif %}
+                  </div>
+              </div>
+               <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if bio_teacher %}
+                      <img src="{{biology.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{biology.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">BIOLOGY</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_7"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{biology}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">BIOLOGY</p>
+                    {% endif %}
+                  </div>
+              </div>
+
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{art.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{art.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ART</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_8"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{music.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{music.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MUSIC</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_9"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{physical.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{physical.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">PHYSICAL EDUCATION</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_10"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+
+             {% elif cls == 'lX A' or cls == 'lX B' or cls == 'X A' or cls == 'X B' %}
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if eng_teacher %}
+                      <img src="{{eng.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{eng.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                        <a href="#"  data-toggle="modal" data-target="#exampleModal"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{eng}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if mal_teacher %}
+                      <img src="{{mal.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{mal.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_2"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{mal}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                   {% if maths_teacher %}
+                      <img src="{{maths.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{maths.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_3"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{maths}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if soc_teacher %}
+                      <img src="{{social.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{social.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SOCIAL SCIENCE</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_4"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{social}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SOCIAL SCIENCE</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if sc_teacher %}
+                      <img src="{{sci.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{sci.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SCIENCE</p>
+                        <a href="#"  data-toggle="modal" data-target="#exampleModal_5"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{sci}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SCIENCE</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{art.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{art.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ART</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_6"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{music.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{music.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MUSIC</p>
+                        <a href="#"  data-toggle="modal" data-target="#exampleModal_7"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{physical.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{physical.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">PHYSICAL EDUCATION</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_8"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+
+            {% else %}
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if eng_teacher %}
+                      <img src="{{eng.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{eng.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{eng}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ENGLISH</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if mal_teacher %}
+                      <img src="{{mal.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{mal.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_2"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{mal}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MALAYALAM</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if maths_teacher %}
+                      <img src="{{maths.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{maths.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_3"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{maths}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MATHEMATICS</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if comp_teacher %}
+                      <img src="{{computer.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{computer.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">COMPUTER</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_4"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                    {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{computer}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">COMPUTER</p>
+                    {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if sc_teacher %}
+                      <img src="{{sci.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{sci.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SCIENCE</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_5"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{sci}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SCIENCE</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      {% if soc_teacher %}
+                      <img src="{{social.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{social.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SOCIAL SCIENCE</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_6"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else %}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{social}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">SOCIAL SCIENCE</p>
+                   {% endif %}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                    {% if hin_teacher %}
+                      <img src="{{hindi.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{hindi.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">HINDI</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_7"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                      {% else%}
+                      <p style="color:red;font-family:Rockwell;font-weight:bold;">{{hindi}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">HINDI</p>
+                    {% endif%}
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{art.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{art.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">ART</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_8"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{music.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{music.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">MUSIC</p>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModal_9"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                      <img src="{{physical.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                      <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{physical.username}}</p>
+                      <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">PHYSICAL EDUCATION</p>
+                       <a href="#"  data-toggle="modal" data-target="#exampleModal_10"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                  </div>
+              </div>
+              {% endif%}
+          </div>
+      </div>
+
+            <!-- Modal -->
+
+             {% if cls == 'Xl A' or cls == 'Xl B' or cls == 'Xll A' or cls == 'Xll B' %}
+                {% if eng_teacher %}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{eng.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{eng.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if mal_teacher %}
+                    <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_2">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{mal.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{mal.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif%}
+                {% if maths_teacher %}
+                    <div class="modal fade" id="exampleModal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_3">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{maths.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{maths.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if comp_teacher %}
+                    <div class="modal fade" id="exampleModal_4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_4">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{computer.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{computer.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if sc_teacher %}
+                    <div class="modal fade" id="exampleModal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_5">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{sci.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{sci.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if ch_teacher %}
+                    <div class="modal fade" id="exampleModal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_6">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{chemistry.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{chemistry.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if bio_teacher %}
+                    <div class="modal fade" id="exampleModal_7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_7">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{biology.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{biology.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                    <div class="modal fade" id="exampleModal_8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_8">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{art.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{art.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal_9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_9">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{music.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{music.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal_10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_10">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{physical.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{physical.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              {% elif cls == 'lX A' or cls == 'lX B' or cls == 'X A' or cls == 'X B' %}
+                    {% if eng_teacher %}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{eng.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{eng.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if mal_teacher %}
+                    <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_2">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{mal.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{mal.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif%}
+                {% if maths_teacher %}
+                    <div class="modal fade" id="exampleModal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_3">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{maths.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{maths.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if soc_teacher %}
+                    <div class="modal fade" id="exampleModal_4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_4">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{social.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{social.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if sc_teacher %}
+                    <div class="modal fade" id="exampleModal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_5">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{sci.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{sci.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                    <div class="modal fade" id="exampleModal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_6">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{art.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{art.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal_7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_7">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{music.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{music.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal_8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_8">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{physical.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{physical.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              {% else %}
+                     {% if eng_teacher %}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{eng.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{eng.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if mal_teacher %}
+                    <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_2">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{mal.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{mal.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif%}
+                {% if maths_teacher %}
+                    <div class="modal fade" id="exampleModal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_3">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{maths.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{maths.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if comp_teacher %}
+                    <div class="modal fade" id="exampleModal_4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_4">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{computer.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{computer.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if sc_teacher %}
+                    <div class="modal fade" id="exampleModal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_5">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{sci.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{sci.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if soc_teacher %}
+                    <div class="modal fade" id="exampleModal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_6">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{social.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{social.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                {% if hin_teacher %}
+                    <div class="modal fade" id="exampleModal_7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_7">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{hindi.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{hindi.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                    <div class="modal fade" id="exampleModal_8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_8">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{art.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{art.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal_9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_9">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{music.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{music.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal_10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered  animate__animated animate__backInDown" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel_10">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px;"> Want to visit &nbsp; {{physical.username}} &nbsp; Profile ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/faculaty_dashboard/{{physical.username}}" class="btn btn-success">Proceed</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+             {% endif %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

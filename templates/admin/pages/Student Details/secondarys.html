@@ -1,0 +1,211 @@
+{{second.stud_name1}}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Right Resume</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+    </noscript>
+    <link href="{% static 'admin/student_details_1/Detail_view/css/font-awesome/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/main.css' %}" rel="stylesheet">
+    <noscript>
+
+    </noscript>
+  </head>
+  <body id="top">
+    <header class="d-print-none">
+      <div class="container text-center text-lg-left">
+        <div class="py-3 clearfix">
+          <h1 class="site-title mb-0">{{second.stud_name1}}</h1>
+          <div class="site-nav">
+            <nav role="navigation">
+              <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip" title="Facebook"><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/templateflip" title="Github"><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="page-content">
+      <div class="container">
+<div class="cover shadow-lg bg-white">
+  <div class="cover-bg p-3 p-lg-4 text-white">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{{second.profie_pic.url}}" width="200" height="200"/></div>
+      </div>
+      <div class="col-lg-8 col-md-7 text-center text-md-start">
+        <h2 class="h1 mt-2" data-aos="fade-left" data-aos-delay="0">{{second.stud_name1}}&nbsp;{{second.stud_name2}}</h2>
+        <p data-aos="fade-left" data-aos-delay="100">{{second.department}}</p>
+         <p data-aos="fade-left" data-aos-delay="100">{{second.Gender}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-section pt-4 px-3 px-lg-4 mt-1">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="h3 mb-3">Address</h2>
+        <p>{{second.address}},&nbsp;{{second.pin_code}}</p>
+        <p>{{second.city}},&nbsp;{{second.state}}</p>
+      </div>
+      <div class="col-md-5 offset-md-1">
+        <div class="row mt-2">
+          <div class="col-sm-4">
+            <div class="pb-1">Age</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{second.dob}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Siblings</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{second.siblings}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Email</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{second.father_mail}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Phone</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{second.father_mob}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Address</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{second.address}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="d-print-none"/>
+  <div class="skills-section px-3 px-lg-4">
+    <h2 class="h3 mb-3">Parents Details</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-2"><span>Father Name &nbsp;: &nbsp;{{second.father_name1}} &nbsp;{{second.father_name2}}</span>
+
+        </div>
+        <div class="mb-2"><span>Occupation &nbsp;: &nbsp;{{second.father_occu}}</span>
+
+        </div>
+        <div class="mb-2"><span>Mobile &nbsp;: &nbsp;{{second.father_mob}}</span>
+        </div>
+
+        <div class="mb-2"><span>Mail &nbsp;: &nbsp;{{second.father_mail}}</span>
+        </div>
+
+        <div class="mb-2"><span>Qualification &nbsp;: &nbsp;{{second.father_quali}}</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+       <div class="mb-2"><span>Mother Name &nbsp;: &nbsp;{{second.mother_name1}} &nbsp;{{second.mother_name2}}</span>
+
+        </div>
+        <div class="mb-2"><span>Occupation &nbsp;: &nbsp;{{second.mother_occu}}</span>
+
+        </div>
+        <div class="mb-2"><span>Mobile &nbsp;: &nbsp;{{second.mother_mob}}</span>
+        </div>
+
+        <div class="mb-2"><span>Mail &nbsp;: &nbsp;{{second.mother_mail}}</span>
+        </div>
+
+        <div class="mb-2"><span>Qualification &nbsp;: &nbsp;{{second.mother_quali}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="d-print-none"/>
+  <div class="work-experience-section px-3 px-lg-4">
+    <h2 class="h3 mb-4">Previous School</h2>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-primary card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">{{second.insti_name}} <span class="text-muted h6">at {{second.prev_address}}</span></div>
+          <div class="text-muted text-small mb-2">{{second.start_date}} - {{second.end_date}}</div>
+          <div>{{second.reason}}</div>
+          <div class="text-muted text-small mb-2" style="margin-left:600px;">CGPA - {{second.cgpa}}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <hr class="d-print-none"/>
+  <div class="page-break"></div>
+  <div class="education-section px-3 px-lg-4 pb-4">
+    <h2 class="h3 mb-4">Personal Details</h2>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Hobbies </div>
+          <div>{{second.hobbies}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Skills </div>
+          <div>{{second.skills}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Blood Group </div>
+          <div>{{second.blood_group}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-break"></div>
+  <div class="education-section px-3 px-lg-4 pb-4">
+    <h2 class="h3 mb-4">Admission Details</h2>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Class in Which Admission is Sought </div>
+          <div>{{second.department}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Class </div>
+          <div>{{second.classes}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Blood Group </div>
+          <div>{{second.blood_group}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/bootstrap.bundle.min.js?ver=1.2.0' %}"></script>
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/aos.js?ver=1.2.0' %}"></script>
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/main.js?ver=1.2.0' %}"></script>
+  </body>
+</html>

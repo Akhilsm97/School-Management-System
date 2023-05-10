@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+</head>
+
+<body>
+      <!------------------------------table data---------------------------->
+
+ <div class="container">
+     <table class="table table-hover table-dark" style="margin-top:200px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Qualification</th>
+      <th scope="col">Previous Experience</th>
+      <th scope="col">Application Status</th>
+      <th scope="col">More Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for add in add %}
+    <tr>
+      <th scope="row">{{add.id}}</th>
+      <td>{{add.teacher_name1}}</td>
+      <td>{{add.teacher_name2}}</td>
+      <td>{{add.address}}</td>
+      <td>{{add.degree2}}</td>
+      <td>{{add.previous_exp1}}</td>
+      <td>{{add.application_status}}</td>
+      <td> <a href="/teacher_approve/{{add.id}}" style="text-decoration:none; color:white; background-color:green; padding:5px;">View</a></td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+
+
+
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

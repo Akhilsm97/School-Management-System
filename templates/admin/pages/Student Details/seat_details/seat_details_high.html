@@ -1,0 +1,54 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+      <!------------------------------table data---------------------------->
+      <br>
+<a href="/admins/" style="margin-left:1200px; text-decoration:none;">Back</a>
+ <div class="container" style="padding: 100px;">
+     <table class="table table-hover table-dark" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Class</th>
+      <th scope="col">Teacher Alloted</th>
+      <th scope="col">Vacant Seats</th>
+      <th scope="col">Total Seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hi_sec in hi_sec %}
+    <tr>
+      <th scope="row">{{hi_sec.id}}</th>
+      <td>{{hi_sec.classes}}</td>
+      <td>{{hi_sec.teacher_alloted}}</td>
+      <td>{{hi_sec.vacant_seat}}</td>
+      <td>{{hi_sec.total_seats}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

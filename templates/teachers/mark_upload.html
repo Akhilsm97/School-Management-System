@@ -1,0 +1,89 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mark Upload</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+        .btn{
+   font-size:15px;
+   font-weight:bold;
+   text-align:center;
+   font-family:Arial;
+}
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 45px;
+      margin-left:400px;
+      margin-top:100px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+    </style>
+</head>
+
+<body>
+        <h2 class="btn  animate-charcter">Mark Attendance Here !</h2>
+
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="width:90%;margin-top:5%;">
+            <table class="table">
+                    <caption>List of users</caption>
+                    <thead>
+                         <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Register No</th>
+                            <th scope="col">Enter Marks</th>
+                         </tr>
+                    </thead>
+                     <tbody>
+                        {% for stud_reg in stud_reg %}
+                             <tr>
+                                 <th scope="row">{{stud_reg.id}}</th>
+                                  <td>{{stud_reg.stud_name}}</td>
+                                  <td>{{stud_reg.reg_no}}</td>
+                                  <td><a href="/upload_mark/{{stud_reg.stud_name}}/{{stud_reg.reg_no}}" class="btn btn-success">Enter mark</a> </td>
+                             </tr>
+                        {% endfor %}
+
+                     </tbody>
+            </table>
+
+        </div>
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

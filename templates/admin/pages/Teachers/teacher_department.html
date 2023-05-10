@@ -1,0 +1,405 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+        .nav{
+padding:20px;
+}
+.nav-tabs{
+margin-bottom:5px;
+}
+
+    </style>
+</head>
+
+<body>
+
+       <div class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <a class="nav-link active glow-on-hover1" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Science Department</a>
+
+
+
+
+                <a class="nav-link glow-on-hover1" id="profile-tab" data-toggle="tab" href="#social" role="tab" aria-controls="social" aria-selected="false">Social Science Department</a>
+
+
+                <a class="nav-link glow-on-hover1" id="profile-tab" data-toggle="tab" href="#english" role="tab" aria-controls="english" aria-selected="false">English Department</a>
+
+
+                <a class="nav-link glow-on-hover1" id="profile-tab " data-toggle="tab" href="#maths" role="tab" aria-controls="profile" aria-selected="false">Maths Department</a>
+
+
+                <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="false">Computer Science Department</a>
+
+               <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#Hindi" role="tab" aria-controls="Hindi" aria-selected="false">Hindi Department</a>
+
+               <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#Malayalam" role="tab" aria-controls="computer" aria-selected="false">Malayalam Department</a>
+
+               <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#Music" role="tab" aria-controls="Music" aria-selected="false">Music Department</a>
+
+              <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#Art" role="tab" aria-controls="Art" aria-selected="false">Art Department</a>
+
+          <a class="nav-link glow-on-hover1" id="contact-tab" data-toggle="tab" href="#phy" role="tab" aria-controls="phy" aria-selected="false">Physical Education Department</a>
+
+           </div>
+
+
+
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+   <div class="container-fluid">
+	<div class="row">
+    {% for adds in adds %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{adds.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{adds.username}}
+                       <p>{{adds.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{adds.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+
+</div>
+
+<div class="tab-pane fade exp-cover alllign" id="social" role="tabpanel" aria-labelledby="profile-tab">
+   <div class="container-fluid">
+	<div class="row">
+    {% for social in social %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{social.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{social.username}}
+                       <p>{{social.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{social.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+<div class="tab-pane fade exp-cover" id="english" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-400px;">
+     <div class="container-fluid">
+	<div class="row">
+    {% for english in english %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{english.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{english.username}}
+                       <p>{{english.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{english.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+<div class="tab-pane fade exp-cover alllign" id="maths" role="tabpanel" aria-labelledby="profile-tab">
+     <div class="container-fluid">
+	<div class="row">
+    {% for maths in maths %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{maths.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{maths.username}}
+                       <p>{{maths.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{maths.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+<div class="tab-pane fade exp-cover " id="computer" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-400px;">
+      <div class="container-fluid">
+	<div class="row">
+    {% for computer in computer %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{computer.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{computer.username}}
+                       <p>{{computer.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{computer.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+       <div class="tab-pane fade exp-cover " id="Hindi" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-400px;">
+       <div class="container-fluid">
+	<div class="row">
+    {% for hindi in hindi %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{hindi.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{hindi.username}}
+                       <p>{{hindi.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{hindi.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+          <div class="tab-pane fade exp-cover " id="Malayalam" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-800px;">
+    <div class="container-fluid">
+	<div class="row">
+    {% for malayalam in malayalam %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{malayalam.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{malayalam.username}}
+                       <p>{{malayalam.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{malayalam.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+          <div class="tab-pane fade exp-cover " id="Music" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-1250px;">
+ <div class="container-fluid">
+	<div class="row">
+    {% for music in music %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{music.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{music.username}}
+                       <p>{{music.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{music.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+          <div class="tab-pane fade exp-cover " id="Art" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-400px;">
+ <div class="container-fluid">
+	<div class="row">
+    {% for art in art %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{art.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{art.username}}
+                       <p>{{art.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{art.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+            <div class="tab-pane fade exp-cover" id="phy" role="tabpanel" aria-labelledby="profile-tab" style="margin-top:-400px;">
+<div class="container-fluid">
+	<div class="row">
+    {% for physical in physical %}
+		<div class="col-md-4">
+
+    		  <div class="profile-card-4 text-center"><img src="{{physical.teacher_img.url}}" class="img img-responsive position-relative">
+                 <div class="profile-content">
+                     <div class="profile-name">{{physical.username}}
+                       <p>{{physical.department_alloted}}</p>
+                     </div>
+                     <div class="profile-description" style="color:white;">{{physical.mail}}</div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                               <div class="profile-overview">
+                                 <a href="/teacher_full_details/{{adds.username}}" class="glow-on-hover1">View Details</a>
+
+                               </div>
+                               </div>
+
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             {% endfor %}
+
+
+
+
+	</div>
+</div>
+</div>
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

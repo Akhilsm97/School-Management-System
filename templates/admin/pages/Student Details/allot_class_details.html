@@ -1,0 +1,310 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/css/approve.css' %}" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="container-fluid container_style shadow  bg-white rounded">
+    <div class="inner_section">
+        <div class="row row_style">
+            <div class="col-md-6 col_style">
+                <div class="img_outer">
+                    <img src="{{allot.profie_pic.url}}" class="profile_pic">
+                </div>
+            </div>
+             <div class="col-md-6 col_style_1">
+                <div class="#">
+                    <h2 style="font-family:Bodoni MT;">{{allot.username}}</h2>
+                    <h3 style="font-family:Bodoni MT;">{{allot.dob}}</h3>
+                    <h4 style="font-family:Bodoni MT;">{{allot.Gender}}</h4>
+                    <h5 style="font-weight:bold;font-family:Apple Chancery, cursive;">Apply for : {{allot.department}}</h5>
+                    <h5 style="font-weight:bold;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {{allot.classes}}</h5>
+                </div>
+            </div>
+        </div>
+        <hr>
+           <h3>Parents Information</h3>
+
+        <div class="row ">
+            <div class="col-md-6 col_style_2">
+                <div class="">
+                  <label class="label_1" >Father Name </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3" style="font-family:Perpetua;">{{allot.father_name1}}&nbsp;{{allot.father_name2}}</label>
+                </div>
+            </div>
+             <div class="col-md-6 col_style_2">
+                  <div class="#">
+                     <label class="label_1" >Mother Name </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.mother_name1}}&nbsp;{{allot.mother_name2}}</label>
+                </div>
+             </div>
+
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Occupation </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.father_occu}}</label>
+                </div>
+             </div>
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Occupation </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.mother_occu}}</label>
+                </div>
+             </div>
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Mobile no </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.father_mob}}</label>
+                </div>
+             </div>
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Mobile no </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.mother_mob}}</label>
+                </div>
+             </div>
+
+
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Mail id </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.father_mail}}</label>
+                </div>
+             </div>
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Mail id </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.mother_mail}}</label>
+                </div>
+             </div>
+
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Qualification</label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.father_quali}}</label>
+                </div>
+             </div>
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Qualification </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_3">{{allot.mother_quali}}</label>
+                </div>
+             </div>
+        </div>
+
+        <hr>
+         <h3>Communication Details</h3>
+          <div class="row address">
+              <div class="col-md-6 ">
+                   <label class="label_1" >Address</label>
+                    <label class="label_2">  :- </label>
+              </div>
+               <div class="col-md-6 ">
+
+              </div>
+
+               <div class="col-md-4 ">
+
+               </div>
+               <div class="col-md-4 ">
+                  <label class="label_4" >{{allot.address}}</label>
+               </div>
+               <div class="col-md-4 ">
+               </div>
+
+
+
+               <div class="col-md-4 com">
+                  <label class="label_6"> Pin Code </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.pin_code}}</label>
+               </div>
+               <div class="col-md-4 com">
+                    <label class="label_6"> City </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.city}}</label>
+               </div>
+               <div class="col-md-4 com">
+                    <label class="label_6"> State</label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.state}}</label>
+               </div>
+          </div>
+
+
+
+               <hr>
+
+         <h3>Previous Acedameic Details</h3>
+          <div class="row address">
+              <div class="col-md-6" >
+                   <label class="label_1" >Institution Name</label>
+                    <label class="label_2">  :- </label>
+              </div>
+               <div class="col-md-6 ">
+
+              </div>
+
+               <div class="col-md-4 ">
+
+               </div>
+               <div class="col-md-4 ">
+                  <label class="label_4" >{{allot.insti_name}}</label>
+               </div>
+               <div class="col-md-4 ">
+               </div>
+
+
+                   <div class="col-md-6 ">
+                   <label class="label_1" >Address</label>
+                    <label class="label_2">  :- </label>
+              </div>
+               <div class="col-md-6 ">
+
+              </div>
+
+               <div class="col-md-4 ">
+
+               </div>
+               <div class="col-md-4 " style="margin-bottom:10px;">
+                  <label class="label_4" >{{allot.prev_address}}</label>
+               </div>
+               <div class="col-md-4 ">
+               </div>
+
+
+
+
+               <div class="col-md-4 com">
+                  <label class="label_6"> Start Date </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.start_date}}</label>
+               </div>
+               <div class="col-md-4 com">
+                    <label class="label_6"> End Date </label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.end_date}}</label>
+               </div>
+               <div class="col-md-4 com">
+                    <label class="label_6"> CGPA</label>
+                    <label class="label_2">  :- </label>
+                    <label class="label_5">{{allot.cgpa}}</label>
+               </div>
+
+               <div class="col-md-6" style="margin-top:30px;">
+                    <label class="label_1" >Reason for leaving last School?</label>
+                    <label class="label_2">  :- </label>
+               </div>
+              <div class="col-md-6">
+
+              </div>
+
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-6" >
+                 <label  style="font-size:25px; font-family:Century Gothic;">{{allot.reason}}</label>
+              </div>
+              <div class="col-md-2">
+
+              </div>
+
+          </div>
+
+        <hr>
+             <h3 style="font-family:Arial Black;">Allot Class</h3>
+       <form method="post" action="/allot_class_details/{{allot.id}}/{{allot.username}}/{{allot.department}}">
+           {% csrf_token %}
+        <div class="row ">
+
+            <div class="col-md-6 col_style_2">
+                <div class="">
+                  <label class="label_1" >First Name </label>
+                    <label class="label_2">  :- </label>
+                    <input type="text" name="stud_name1" class="form-control" value="{{allot.stud_name1}}" readonly>
+                </div>
+            </div>
+             <div class="col-md-6 col_style_2">
+                  <div class="#">
+                     <label class="label_1" >Last Name </label>
+                    <label class="label_2">  :- </label>
+                    <input type="text" name="stud_name2" class="form-control" value="{{allot.stud_name2}}" readonly>
+                </div>
+             </div>
+
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Department </label>
+                    <label class="label_2">  :- </label>
+                      <input type="text" name="department" class="form-control" value="{{allot.department}}" readonly>
+                </div>
+             </div>
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Teacher_Alloted</label>
+                    <label class="label_2">  :- </label>
+                    <select name="teacher_alloted" class="form-control" required>
+                        <option value="">---Select----</option>
+                        {% for depart in depart %}
+                        <option value="{{depart.teacher_alloted}}">{{depart.teacher_alloted}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+             </div>
+             <div class="col-md-6 col_style_3">
+                  <div class="#">
+                     <label class="label_1" >Class_Alloted</label>
+                    <label class="label_2">  :- </label>
+                    <select name="class_alloted" class="form-control" required>
+                        <option value="">---Select----</option>
+                        {% for depart in depart %}
+                        <option value="{{depart.classes}}">{{depart.classes}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+             </div>
+
+              <div class="col-md-6 col_style_3">
+                  <div class="#">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+             </div>
+
+        </div>
+</form>
+
+    </div>
+
+</div>
+
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

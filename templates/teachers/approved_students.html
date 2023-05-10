@@ -1,0 +1,77 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_view.css' %}">
+
+    <style>
+ .card-text{margin-left:10px; font-size:15px;  color:green;font-family: "Times New Roman", Times, serif;}
+    .btn-change{
+    height: 50px;
+    width: 200px;
+    background: lightseagreen;
+    margin: 20px;
+    float: left;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 0px;
+    color: #fff;
+}
+.btn-change:hover{
+    -webkit-transform: scale(1.1);
+    background: #31708f;
+}
+    </style>
+</head>
+<div class="container" tyle="padding-top:20px;">
+    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4" style="margin-top:20px;">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/teacher_profile/" id = "home" style="color:black;font-family: cursive;">Home</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color:black;font-family: cursive;">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:black;font-family: cursive;">{{username}}</li>
+          </ol>
+        </nav>
+
+</div>
+   <div class="container py-5">
+      <div class="row mt-4">
+
+       {% for studs in studs %}
+  <div class="col-md-3 mt-3 ">
+         <div class="card  shadow-lg p-3 mb-5 bg-white rounded" style="width:19rem; ">
+            <div class="card-body">
+            <img src="{{studs.profie_pic.url}}" class="rounded-circle" width="200px" height="200px" style="margin-left:25px;" alt="">
+            <div class="card-text" style="font-size:20px;"><br>
+              <p style="font-size:15px;">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {{studs.username}} </p><br>
+              <p>Adm No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;{{studs.reg_no}}</p><br>
+              <button type="button" id="more_details"   class="btn btn-primary btn-change" style="margin-left:5px;"><a href="/stud_full_details/{{studs.username}}" style="color:white; text-decoration:none;">More Details&nbsp;<i class="fas fa-angle-double-right"></i></a></button>
+            </div>
+            </div>
+          </div>
+        </div>
+      {% endfor%}
+
+      </div>
+   </div>
+    {% for aaa in aaa %}
+    {{aaa.mails}}
+    {% endfor %}
+<body>
+
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'add_teachers/css/stud_details/stud_details.css' %}" rel="stylesheet">
+    <style>
+        body{
+          background-color:#BAB8B8
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="container" tyle="padding-top:20px;">
+    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4" style="margin-top:20px;">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/teacher_profile/" id="home" style="color:black;font-family: cursive;">Home</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color:black;font-family: cursive;">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:black;font-family: cursive;">{{username}}</li>
+          </ol>
+        </nav>
+
+</div>
+ <div class="container profile-page">
+    <div class="row">
+        {% for stud_details in stud_details %}
+
+        <div class="col-xl-6 col-lg-7 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right"> <img src="{{stud_details.profie_pic.url}}" alt=""> </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h4 class="m-t-0 m-b-0"><strong>{{stud_details.username}}</strong></h4>
+                            <span class="job_post">{{stud_details.dob}}</span>
+                            <p>{{stud_details.class_alloted}}</p>
+                            <div>
+                                <button class="btn btn-primary btn-round"> <a href="/verify_stud_details/{{stud_details.username}}/{{username}}" class="more_details" style="color:white;text-decoration:none;">More Details</a> </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+	</div>
+</div>
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+{% load static %}
+{% load multifor %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Alloted class Faculaty</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+</head>
+
+<body>
+<a href="/faculty_corner/">Back</a>
+
+
+             <div class="container">
+                <div class="row">
+                  {% for a in a; b in b %}
+
+                    <div class="col-md-3">
+                        <div class="inner_div shadow p-3 mb-5 bg-body rounded" style="width:90%; border: solid lightgrey 1px">
+                              <img src="{{a.teacher_img.url}}" width="80%" height="60%" class="img-thumbnail" style="margin:5px 5px 5px 20px; border-radius:10px;">
+                              <p style="font-family:Rockwell;font-weight:bold;" class="text-center">{{a.username}}</p>
+                              <p style="font-family:Rockwell;font-weight:bold; font-size:14px; color:grey;" class="text-center">{{b}}</p>
+                              <a href="#"  data-toggle="modal" data-target="#exampleModal-{{forloop.counter}}"><img src="{% static 'Faculaty Corner/images/img/dots.png' %}" style="width:15px; height:15px;border-radius:0px;margin-left:170px;"></a>
+                        </div>
+                    </div>
+                   {% endfor%}
+                </div>
+             </div>
+
+            <!--------------------------------- Modal for dashboard ------------->
+        {% for a in a; b in b %}
+            <div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <b>Do you want to continue to {{b}}?</b>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <a href="/alloted_dashboard/{{a.id}}/{{a.username}}/{{b}}" class="btn btn-success"> << Continue >> </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor%}
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

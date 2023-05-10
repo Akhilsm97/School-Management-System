@@ -1,0 +1,286 @@
+{{teacher.stud_name1}}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teacher Approve</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+    </noscript>
+    <link href="{% static 'admin/student_details_1/Detail_view/css/font-awesome/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/student_details_1/Detail_view/css/main.css' %}" rel="stylesheet">
+    <noscript>
+
+    </noscript>
+  </head>
+  <body id="top">
+    <header class="d-print-none">
+      <div class="container text-center text-lg-left">
+        <div class="py-3 clearfix">
+          <h1 class="site-title mb-0">{{teacher.teacher_name1}}</h1>
+          <div class="site-nav">
+            <nav role="navigation">
+              <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip" title="Facebook"><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/templateflip" title="Github"><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="page-content">
+      <div class="container">
+<div class="cover shadow-lg bg-white">
+  <div class="cover-bg p-3 p-lg-4 text-white">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{{teacher.teacher_img.url}}" width="200" height="200"/></div>
+      </div>
+      <div class="col-lg-8 col-md-7 text-center text-md-start">
+        <h2 class="h1 mt-2" data-aos="fade-left" data-aos-delay="0">{{teacher.teacher_name1}}&nbsp;{{teacher.teacher_name2}}</h2>
+        <p data-aos="fade-left" data-aos-delay="100">{{teacher.position}}</p>
+         <p data-aos="fade-left" data-aos-delay="100">{{teacher.Gender}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-section pt-4 px-3 px-lg-4 mt-1">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="h3 mb-3">Address</h2>
+        <p>{{teacher.address}},&nbsp;{{teacher.pin_code}}</p>
+        <p>{{teacher.city}},&nbsp;{{teacher.state}}</p>
+      </div>
+      <div class="col-md-5 offset-md-1">
+        <div class="row mt-2">
+          <div class="col-sm-4">
+            <div class="pb-1">Age</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{teacher.dob}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Siblings</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{teacher.siblings}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Email</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{teacher.mail}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Phone</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{teacher.mob_no}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pb-1">Address</div>
+          </div>
+          <div class="col-sm-8">
+            <div class="pb-1 text-secondary">{{teacher.address}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="d-print-none"/>
+  <div class="work-experience-section px-3 px-lg-4">
+    <h2 class="h3 mb-4">Qualification</h2>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-primary card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">High School <span class="text-muted h6">at {{teacher.high_school}}</span></div>
+          <div class="text-muted text-small mb-2">{{teacher.year_attend1}} - {{teacher.end_date}}</div>
+          <div class="h5 mb-1">Promoted <span class="text-muted h6"> : &nbsp;{{teacher.graduated1}}</span></div>
+          <div class="text-muted text-small mb-2" style="margin-left:600px;">CGPA - {{teacher.cgpa}}</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-primary card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Graduation - {{teacher.degree1}} <span class="text-muted h6">at {{teacher.college_name}}</span></div>
+          <div class="text-muted text-small mb-2">{{teacher.year_attend2}} </div>
+          <div class="h5 mb-1">Graduated <span class="text-muted h6"> : &nbsp;{{teacher.graduated2}}</span></div>
+          <div class="text-muted text-small mb-2" style="margin-left:600px;">CGPA - {{teacher.cgpa}}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-card timeline-card-primary card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Graduation - {{teacher.degree2}} <span class="text-muted h6">at {{teacher.college_name2}}</span></div>
+          <div class="text-muted text-small mb-2">{{teacher.year_attend3}}</div>
+          <div class="h5 mb-1">Graduated <span class="text-muted h6"> : &nbsp;{{teacher.graduated3}}</span></div>
+          <div class="text-muted text-small mb-2" style="margin-left:600px;">CGPA - {{teacher.cgpa}}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="work-experience-section px-3 px-lg-4">
+      <h2 class="h3 mb-4">Experience</h2>
+    <div class="timeline">
+        <div class="timeline-card timeline-card-primary card shadow-sm">
+          <div class="card-body">
+              <div class="h5 mb-1">Experience 1</div>
+               <div class="text-muted text-small mb-2"></div>
+               <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.previous_exp1}}</span></div>
+          </div>
+        </div>
+    </div>
+      <div class="timeline">
+         <div class="timeline-card timeline-card-primary card shadow-sm">
+            <div class="card-body">
+              <div class="h5 mb-1">Experience 2</div>
+              <div class="text-muted text-small mb-2"></div>
+              <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.previous_exp2}}</span></div>
+            </div>
+         </div>
+      </div>
+
+
+       <div class="timeline">
+         <div class="timeline-card timeline-card-primary card shadow-sm">
+            <div class="card-body">
+              <div class="h5 mb-1">Experience 3</div>
+               <div class="text-muted text-small mb-2"></div>
+               <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.previous_exp3}}</span></div>
+            </div>
+         </div>
+       </div>
+  </div>
+
+
+        <hr class="d-print-none"/>
+      <div class="work-experience-section px-3 px-lg-4">
+        <h2 class="h3 mb-4">Recent Position</h2>
+        <div class="timeline">
+          <div class="timeline-card timeline-card-primary card shadow-sm">
+            <div class="card-body">
+               <div class="h5 mb-1">Position 1</div>
+                <div class="text-muted text-small mb-2"></div>
+                <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.recent_position1}}</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-card timeline-card-primary card shadow-sm">
+              <div class="card-body">
+                <div class="h5 mb-1">Position 2</div>
+               <div class="text-muted text-small mb-2"></div>
+                <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.recent_position2}}</span></div>
+              </div>
+           </div>
+        </div>
+
+
+       <div class="timeline">
+            <div class="timeline-card timeline-card-primary card shadow-sm">
+              <div class="card-body">
+                <div class="h5 mb-1">Position 3</div>
+                <div class="text-muted text-small mb-2"></div>
+                 <div class="h5 mb-1">Description <span class="text-muted h6"> : &nbsp;{{teacher.recent_position3}}</span></div>
+              </div>
+            </div>
+       </div>
+      </div>
+
+  <hr class="d-print-none"/>
+  <div class="page-break"></div>
+  <div class="education-section px-3 px-lg-4 pb-4">
+    <h2 class="h3 mb-4">Personal Details</h2>
+    <div class="timeline">
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Hobbies </div>
+          <div>{{teacher.hobbies}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Skills </div>
+          <div>{{teacher.skills}}</div>
+        </div>
+      </div>
+      <div class="timeline-card timeline-card-success card shadow-sm">
+        <div class="card-body">
+          <div class="h5 mb-1">Blood Group </div>
+          <div>{{teacher.blood_group}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!----------------------------admission Acceptance Details ----------------------->
+
+       <hr class="d-print-none"/>
+      <div class="contant-section px-3 px-lg-4 pb-4" id="contact">
+          <h2 class="h3 text mb-3">Acceptance</h2>
+             <div class="row">
+                 <div class="col-md-12 d-print-none">
+                     <div class="my-2"><form action="/manager_approve_teachers/{{teacher.id}}" method="POST">
+                       {% csrf_token %}
+                          <div class="row">
+                              <div class="col-6" >
+                                   <input class="form-control" type="text" id="name" name="teacher_name1" value="{{teacher.teacher_name1}}" readonly>
+                              </div>
+                               <div class="col-6">
+                                   <input class="form-control" type="text" id="email" name="teacher_name2" value="{{teacher.teacher_name2}}"  readonly>
+                               </div>
+                            <div class="col-6" style="margin-top:30px;">
+                                   <label>Approve by</label>
+                               </div>
+                            <div class="col-6" style="margin-top:30px;">
+
+                               </div>
+                            <div class="col-6" style="margin-top:30px;color:black;">
+                                    <select class="form-control" name="approval_manager">
+                                      <option value="">-Select-</option>
+                                      {% for admini in admini %}
+                                      <option value="{{admini.username}}">{{admini.username}}</option>
+                                      {% endfor %}
+                                    </select>
+                               </div>
+
+                          </div>
+
+                                  <button class="btn btn-primary mt-2" type="submit" name="submit">Selected</button>
+                      </form>
+                     </div>
+                 </div>
+             </div>
+          </div>
+      </div>
+
+
+
+
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/bootstrap.bundle.min.js?ver=1.2.0' %}"></script>
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/aos.js?ver=1.2.0' %}"></script>
+    <script src="{% static 'admin/student_details_1/Detail_view/scripts/main.js?ver=1.2.0' %}"></script>
+  </body>
+</html>

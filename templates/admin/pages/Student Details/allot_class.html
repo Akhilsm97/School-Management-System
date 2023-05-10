@@ -1,0 +1,163 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+      <!------------------------------table data---------------------------->
+      <br>
+<a href="/admins/" style="margin-left:1200px; text-decoration:none;">Back</a>
+      <h2 style="text-align:center;margin-bottom:30px;">Lower Primary</h2>
+<div class="container">
+     <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+      <th scope="col">Class</th>
+      <th scope="col">Application Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for lower in lower %}
+    <tr>
+      <th scope="row">{{lower.id}}</th>
+      <td>{{lower.stud_name1}}</td>
+      <td>{{lower.stud_name2}}</td>
+      <td>{{lower.address}}</td>
+      <td>{{lower.department}}</td>
+      <td>{{lower.classes}}</td>
+      <td>{{lower.application_status}}</td>
+      <td><a href="/allot_class_details/{{lower.id}}/{{lower.username}}/{{lower.department}}" style="color:white; text-decoration:none;">More Details</a> </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+<!-------- Upper Primary---------------->
+
+<h2 style="text-align:center;margin-bottom:30px;">Upper Primary</h2>
+<div class="container">
+     <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+      <th scope="col">Class</th>
+      <th scope="col">Application Status</th>
+         <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for upper in upper %}
+    <tr>
+      <th scope="row">{{upper.id}}</th>
+      <td>{{upper.stud_name1}}</td>
+      <td>{{upper.stud_name2}}</td>
+      <td>{{upper.address}}</td>
+      <td>{{upper.department}}</td>
+      <td>{{upper.classes}}</td>
+      <td>{{upper.application_status}}</td>
+       <td><a href="/allot_class_details/{{upper.id}}/{{upper.username}}/{{upper.department}}" style="color:white; text-decoration:none;">More Details</a> </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+<!---------Secondary---------->
+<h2 style="text-align:center;margin-bottom:30px;">Secondary</h2>
+<div class="container">
+     <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+      <th scope="col">Class</th>
+      <th scope="col">Application Status</th>
+        <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for secon in secon %}
+    <tr>
+      <th scope="row">{{secon.id}}</th>
+      <td>{{secon.stud_name1}}</td>
+      <td>{{secon.stud_name2}}</td>
+      <td>{{secon.address}}</td>
+      <td>{{secon.department}}</td>
+      <td>{{secon.classes}}</td>
+      <td>{{secon.application_status}}</td>
+      <td><a href="/allot_class_details/{{secon.id}}/{{secon.username}}/{{secon.department}}" style="color:white; text-decoration:none;">More Details</a> </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+
+<!---------High Secondary---------->
+<h2 style="text-align:center;margin-bottom:30px;">High Secondary</h2>
+<div class="container">
+     <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+      <th scope="col">Class</th>
+      <th scope="col">Application Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for high in high %}
+    <tr>
+      <th scope="row">{{high.id}}</th>
+      <td>{{high.stud_name1}}</td>
+      <td>{{high.stud_name2}}</td>
+      <td>{{high.address}}</td>
+      <td>{{high.department}}</td>
+      <td>{{high.classes}}</td>
+      <td>{{high.application_status}}</td>
+      <td><a href="/allot_class_details/{{high.id}}/{{high.username}}/{{high.department}}" style="color:white; text-decoration:none;">More Details</a> </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+{% load static %}
+{% %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{username_user}}</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script rel="script" src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <link href="{% static 'add_teachers/css/student_profile/home.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+      <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Bootstrap/glow_hover.css' %}">
+
+
+</head>
+    <body>
+    <a href="/teacher_profile/">Back</a>
+
+     <form action="/attendence/" method="post">
+         {% csrf_token %}
+         <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="height:260px;width:90%;margin-top:5%;">
+             <div class="row" style="height:150px;padding:20px; margin:30px; width:90%;">
+                 <div class="col-md-6" style="border: solid blue 2px;height:100px;">
+                      <div class="row">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="date" id="myInput" class="form-control" name="date_of_attendances"  style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" >
+                        </div>
+                     </div>
+
+                     <div class="row" style="margin-top:18px;">
+                        <div class="col-md-6" >
+                          <label class="" style="margin-top:28px;margin-left:-5px;font-size:20px;"><b>Selected Date </b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="text" id="myInputs" oninput="myFun()" class="form-control" value="{{dates}}" readonly style="margin-top:20px;margin-left:-60px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;border:none;" >
+                        </div>
+                     </div>
+
+                 </div>
+                 <div class="col-md-6" style="border: solid blue 2px;height:100px;">
+                    <div class="row">
+                      <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Class</b></label>
+                      </div>
+                      <div class="col-md-4" style="margin-left:-10px;">
+                          <select type="text" id="myselection" name="my_clas"  class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                    <option value="yellow" style="font-weight:bold;" selected>{{cls}}</option>
+                          </select>
+                      </div>
+                        <div class="row" style="margin-top:18px; margin-left:70px;">
+                        <div class="col-md-6"style=" margin-left:50px;" >
+                          <label class="" style="margin-top:28px;margin-left:20px;font-size:20px;"><b>Last Attendance Date </b></label>
+                        </div>
+                        <div class="col-md-4" >
+                            <input type="text" class="form-control" value="{{last_date.date_of_attendance}}"  style="margin-top:20px;margin-left:-50px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;border:none;" >
+                        </div>
+                     </div>
+
+                    </div>
+                 </div>
+
+             </div>
+
+
+
+             <button type="submit" name="submit" class="btn btn-primary" style="margin-left:580px;margin-top:-40px;">Confirm Date</button>
+
+         </div>
+
+     </form>
+     <div class="yellow msg">
+             <div class="row">
+                <div class="col-md-4">
+                    <button id="show" class="glow-on-hover1" style="margin-left:100px;">Attendance Sheet</button>
+                </div>
+             </div>
+
+     </div>
+
+
+    <div class="menu" style="display: none;">
+
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="width:90%;">
+            <h4 style="text-align:center;"><b>Attendance Sheet</b></h4>
+            <div class="col-md-4"style="margin-left:150px; margin-top:20px; font-size:18px;" >
+                 <p style="color:black;font-family: ui-sans-serif;font-size:18px;">Teacher : <b>{{username_user}}</b></p>
+            </div>
+             <div class="col-md-4" style="margin-left:150px; margin-top:20px;font-size:18px;" >
+                <p style="color:black;font-family: ui-sans-serif;font-size:18px;">Class: <b>{{cls}}</b></p>
+             </div>
+
+            <div class="row">
+
+
+
+            </div>
+
+            <div class="row" style="padding:20px;">
+
+                 {% for stud in stud %}
+
+                <div class="col-md-3" style=" padding:20px;">
+                    <div class="box shadow-lg" style="width:250px;">
+                        <img src="{{stud.profie_pic.url}}" class="img-thumbnail" style="width:150px; height:150px; border-radius:50%;margin-left:50px;margin-top:5px;">
+                        <div class="row">
+                            <p  id="name"  style="width:190px; border:black;background:white;color:black;margin-left:-25px;margin-left:70px;font-weight:bold; font-family:serif;font-size:18px;">{{stud.username}}</p>
+                            <p  id="reg"    style="width:150px; border:black;background:white;color:black;margin-left:-32px;margin-left:78px;font-weight:bold;">{{stud.reg_no}}</p>
+                            <p  id="dated"   style="width:150px; border:black;background:white;color:black;margin-left:70px;font-weight:bold;">Last Recorded: {{last_date.date_of_attendance}}</p>
+                            <p  id="dat"   style="width:200px; border:black;background:white;color:black;margin-left:50px;font-weight:bold;color:red;">{{msgss}}</p>
+                            <a href="#exampleModal-{{forloop.counter}}"  data-toggle="modal" class="btn btn-success"  style="color:white; font-weight:bold;" >Attendence</a>
+                        </div>
+                    </div>
+                </div>
+                   {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% for stud in stud %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+                 <form method="post" action="/attendance_mark/{{stud.username}}/{{stud.reg_no}}/{{dates}}">
+           {% csrf_token %}
+            <div class="container">
+              <div class="row" style="width:100%; ">
+                <div class="col-md-4" style="width:100%;">
+                    <h4>Attendance Date: <input type="text" name="date_of_attendance" value="{{dates}}" class="input_styles" readonly style="border:white;"> </h4>
+                </div>
+               <div class="col-md-4" style="width:100%;">
+                    <h4 style="font-family:cursive; color:red;font-weight:bold;font-size:15px; margin-left:450px;">{{msgss}}</h4>
+               </div>
+              </div>
+            </div>
+
+
+
+             <div class="row" style="padding:10px; margin:10px;margin-left:5px; width:95%;">
+                 <div class="col-md-5" style="border: solid #D3D3D3 2px; " >
+                      <div class="row" >
+                        <div class="col-md-4" style="margin:40px; width:200px; ">
+                          <img src="{{stud.profie_pic.url}}" class="prof_pic img-thumbnail" style="border-radius:50px;width:250px; height:150px;">
+                            <input type="text"   class="form-control text-center " name="stud_name" value="{{stud.username}}" readonly style="background-color:white;width:150px;margin-left:10px;font-weight:bold;border:white;">
+                            <input type="text"   class="form-control text-center " name="reg_no" value="{{stud.reg_no}}" style="margin-left:10px;background-color:white;width:150px;font-weight:bold;border:white; "  readonly>
+                        </div>
+                      </div>
+                 </div>
+                 <div class="col-md-7" style="border: solid #D3D3D3 2px;">
+                    <div class="row" style="padding:50px;">
+                      <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:-45px;font-size:23px;"><b>Attendance:</b></label>
+                      </div>
+                      <div class="col-md-6" style="margin-left:-30px;  padding:20px;width:600px;margin-top:20px;">
+                         <div class="form-check form-check-inline">
+                             <input class="form-check-input" type="radio" name="Attendence" id="inlineRadio1" value="Present">
+                             <label class="form-check-label" for="inlineRadio1">Present</label>
+                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="Attendence" id="inlineRadio2" value="Absent">
+                            <label class="form-check-label" for="inlineRadio2">Absent</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="Attendence" id="inlineRadio3" value="Late" >
+                            <label class="form-check-label" for="inlineRadio3">Late</label>
+                        </div>
+                      </div>
+                    </div>
+
+                            {% if recorded and stud.username %}
+                                <button type="submit" name="submit" class="btn btn-success " style="margin-left:250px;margin-top:-30px;" onclick="myFunction()" disabled>Mark Attendance</button>
+                            {% else %}
+                                 <button type="submit" name="submit" class="btn btn-success " style="margin-left:250px;margin-top:-30px;" onclick="myFunction()">Mark Attendance</button>
+                            {% endif %}
+
+       </form>
+                 </div>
+
+             </div>
+
+       </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+         <!==============Profile Image ========>
+<script type="text/javascript">
+  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+        <script>
+function myFunction() {
+  var x = document.getElementById("name").value;
+
+  document.getElementById("names").value = document.getElementById("name").value
+  document.getElementById("data").value = document.getElementById("reg").value
+  document.getElementById("data").value = document.getElementById("date").value
+
+}
+</script>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#show').click(function() {
+      $('.menu').toggle("slide");
+    });
+});
+</script>
+
+    <script>
+$(document).ready(function(){
+    $('#attend').click(function() {
+      $('.att').toggle("slide");
+    });
+});
+</script>
+
+
+
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("select").change(function(){
+            $(this).find("option:selected").each(function(){
+                var val = $(this).attr("value");
+                if(val){
+                    $(".msg").not("." + val).hide();
+                    $("." + val).show();
+                } else{
+                    $(".msg").hide();
+                }
+            });
+        }).change();
+    });
+    </script>
+
+     <script type="text/javascript">
+         function myFun()
+         {
+          document.getElementById("dated").value = document.getElementById("myInputs").value
+         }
+     </script>
+
+
+     <script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'Bootstrap/js/jquerys.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/script.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

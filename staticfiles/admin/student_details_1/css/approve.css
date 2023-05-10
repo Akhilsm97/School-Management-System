@@ -1,0 +1,72 @@
+.container_style{
+
+ width:70%;
+ height:70%;
+ margin-left: 200px;
+ margin-top:100px;
+}
+.row_style{
+   margin-top:-80px;
+}
+.col_style{
+   padding:20px;
+   padding-left:70px;
+}
+.img_outer{
+  width:205px;
+  border:solid black 2px;
+  border-radius:5px;
+}
+
+.profile_pic{
+  width:200px;
+  padding:10px;
+
+}
+.col_style_1{
+padding-top:70px;
+}
+.col_style_2{
+padding:50px;
+}
+.col_style_3{
+padding:50px;
+margin-top:-60px;
+}
+.label_1{
+  font-size:25px;
+  font-weight:bold;
+  font-family:Book Antiqua;
+}
+.label_2{
+margin-left:15px;
+font-size:25px;
+  font-weight:bold;
+}
+.label_3{
+margin-left:20px;
+font-size:25px;
+font-family:Perpetua;
+}
+.address{
+margin:50px;
+margin-left:80px;
+width:90%;
+}
+
+.label_4{
+  font-size:25px;
+
+  margin-left:-100px;
+  font-family:Perpetua;
+}
+
+.label_5{
+ font-size:18px;
+ font-family:Perpetua;
+
+}
+.label_6{
+ font-size:18px;
+  font-weight:bold;
+}

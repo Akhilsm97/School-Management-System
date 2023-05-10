@@ -1,0 +1,270 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'admin/teachers/pagination.css' %}">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <title>Allot Subject</title>
+  </head>
+  <body>
+        <div class="container-md p-3 mb-5 bg-body rounded" style="width:93em;height:60px;padding-top:30px; margin:30px 10px 10px 10px;">
+          <form method="post" action="/allot_subject/">
+                     {% csrf_token %}
+            <div class="row" style="margin-left:150px;">
+                <div class="col-md-4">
+                        <button type="button"  class="btn btn-success" data-toggle="collapse" data-target="#table1" aria-expanded="false" aria-controls="table1">Details</button>
+                </div>
+
+                    <div class="col-md-3" style="margin-left:5px;">
+                        <select name="depart_name" class="form-control text-center" style="width:250px;margin-left:140px;">
+                            <option name="" value="">--Select--</option>
+                            {% for depart in depart %}
+                             <option name="" value="{{depart.department_alloted}}">{{depart.department_alloted}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3" style="margin-left:80px;">
+                        <button type="submit" name="submit" class="btn btn-success" >Search</button>
+                         <a type="submit" name="submit" class="btn btn-success" data-toggle="collapse" data-target="#table2" aria-expanded="false" aria-controls="table2">Search Result</a>
+                    </div>
+            </div>
+          </form>
+       </div>
+
+            <div id="accordions">
+                          <div id="table1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordions">
+                            <div class="p-5 my-4 bg-light rounded-3 shadow p-3 mb-5 bg-body rounded" style="margin-top:-50px;">
+                              <table class="table table-hover table-bordered" style="margin-top:-90px;">
+                                  <thead class="shadow p-3 mb-5 bg-body rounded bg-success">
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Teacher Id</th>
+                                      <th scope="col">Class Alloted</th>
+                                      <th scope="col">Position</th>
+                                      <th scope="col">Department</th>
+                                      <th scope="col">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for users in users  %}
+                                    <tr>
+                                      <th scope="row">{{users.id}}</th>
+                                      <td>{{users.username}}</td>
+                                      <td>{{users.teacher_id}}</td>
+                                      <td>{{users.alloted_class}}</td>
+                                      <td>{{users.position}}</td>
+                                      <td>{{users.department_alloted}}</td>
+                                      <td>
+                                          <span title="Lower Primary" data-toggle="tooltip" data-placement="top"><a href="#exampleModal-{{forloop.counter}}"  data-toggle="modal" data-tip="edit" style="color:black;margin-left:45px;"><i class="fa fa-edit"></i></a></span>
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                             </table>
+                              <div class="row">
+                                <div class="col col-sm-6 col-xs-6"> <b>{{msgs}}</b></div>
+                                  <div class="col-sm-6 col-xs-6">
+                                    {% if users.has_other_pages %}
+                                        <ul class="pagination" style="color:black;">
+                                            {% if users.has_previous %}
+                                                <li><a href="?page={{ users.previous_page_number }}" style="color:black;">«</a></li>
+                                            {% else %}
+                                                <li class="disabled" style="color:black;"><span>«</span></li>
+                                            {% endif %}
+                                            {% for i in users.paginator.page_range %}
+                                                {% if users.number == i %}
+                                                    <li class="active" style="color:black;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ i }}" style="color:black;">{{ i }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if users.has_next %}
+                                                <li><a href="?page={{ users.next_page_number }}" style="color:black;">»</a></li>
+                                            {% else %}
+                                                <li class="disabled" style="color:black;"><span>»</span></li>
+                                            {% endif %}
+                                        </ul>
+                                    {% endif %}
+                                 </div>
+                               </div>
+                              </div>
+                           </div>
+                          </div>
+                          <div id="table2" class="collapse" aria-labelledby="headingOne" data-parent="#accordions">
+                              <div class="p-5 my-4 bg-light rounded-3 shadow p-3 mb-5 bg-body rounded" style="margin-top:-50px;">
+                                  <table class="table table-hover table-bordered" style="margin-top:-90px;">
+                                  <thead class="shadow p-3 mb-5 bg-body rounded bg-success">
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Teacher Id</th>
+                                      <th scope="col">Class Alloted</th>
+                                      <th scope="col">Position</th>
+                                      <th scope="col">Department</th>
+                                      <th scope="col">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for departss in departss  %}
+                                    <tr>
+                                       <th scope="row">{{departss.id}}</th>
+                                      <td>{{departss.username}}</td>
+                                      <td>{{departss.teacher_id}}</td>
+                                      <td>{{departss.alloted_class}}</td>
+                                      <td>{{departss.position}}</td>
+                                      <td>{{departss.department_alloted}}</td>
+                                      <td>
+                                          <span title="Lower Primary" data-toggle="tooltip" data-placement="top"><a href="#exampleModals-{{forloop.counter}}"  data-toggle="modal" data-tip="edit" style="color:black;margin-left:45px;"><i class="fa fa-edit"></i></a></span>
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                             </table>
+
+                              </div>
+
+                          </div>
+
+
+            </div>
+
+
+      <!---------------------------------------Class Deatils ---------------------------------->
+
+      <div class="container-md shadow p-3 mb-5 bg-body rounded" style="width:93em; margin:20px 10px 10px 20px;">
+        <div class="p-5 my-4 bg-light rounded-3 shadow p-3 mb-5 bg-body rounded">
+            <table class="table table-hover table-bordered">
+              <thead class="shadow p-3 mb-5 bg-body rounded bg-success">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Class</th>
+                  <th scope="col">Teacher Incharge</th>
+                  <th scope="col">English</th>
+                  <th scope="col">Malayalam</th>
+                  <th scope="col">Maths</th>
+                  <th scope="col">Computer</th>
+                  <th scope="col">Science</th>
+                  <th scope="col">Social</th>
+                  <th scope="col">Hindi</th>
+                  <th scope="col">Gk</th>
+                  <th scope="col">Physics</th>
+                  <th scope="col">Chemistry</th>
+                  <th scope="col">Biology</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in user  %}
+                <tr>
+                  <th scope="row">{{user.id}}</th>
+                  <td>{{user.class_name}}</td>
+                  <td>{{user.teacher_incharge}}</td>
+                  <td>{{user.english}}</td>
+                  <td>{{user.malayalam}}</td>
+                  <td>{{user.maths}}</td>
+                  <td>{{user.computer}}</td>
+                  <td>{{user.science}}</td>
+                  <td>{{user.social}}</td>
+                  <td>{{user.hindi}}</td>
+                  <td>{{user.gk}}</td>
+                  <td>{{user.physics}}</td>
+                  <td>{{user.chemistry}}</td>
+                  <td>{{user.biology}}</td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+                        <div class="row">
+                      <div class="col col-sm-6 col-xs-6"> <b>{{mss}}</b></div>
+                        <div class="col-sm-6 col-xs-6">
+                            {% if user.has_other_pages %}
+                                <ul class="pagination" style="color:black;">
+                                    {% if user.has_previous %}
+                                        <li><a href="?pages={{ user.previous_page_number }}" style="color:black;">«</a></li>
+                                    {% else %}
+                                        <li class="disabled" style="color:black;"><span>«</span></li>
+                                    {% endif %}
+                                    {% for i in user.paginator.page_range %}
+                                        {% if user.number == i %}
+                                            <li class="active" style="color:black;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                        {% else %}
+                                            <li><a href="?pages={{ i }}" style="color:black;">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if user.has_next %}
+                                        <li><a href="?pages={{ user.next_page_number }}" style="color:black;">»</a></li>
+                                    {% else %}
+                                        <li class="disabled" style="color:black;"><span>»</span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+
+        </div>
+      </div>
+      {% for users in users %}
+
+<!-- Modal -->
+        <div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-ml" role="document" >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lower Primary</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                        <p><b> Do you want to allocate subjects to {{users.username}}?</b></p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/subject_allocat/{{users.username}}/{{users.department_alloted}}" class="btn btn-success" >Yes</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+        {% for departss in departss %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModals-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-ml" role="document" >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabels">Lower Primary</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                        <p><b> Do you want to allocate subjects to {{departss.username}}?</b></p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/subject_allocat/{{departss.username}}/{{departss.department_alloted}}" class="btn btn-success" >Yes</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

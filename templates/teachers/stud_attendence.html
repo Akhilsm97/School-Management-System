@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{username_user}}</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script rel="script" src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <link href="{% static 'add_teachers/css/student_profile/home.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+      <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <style>
+         body{
+          background-color:#BAB8B8
+        }
+    </style>
+</head>
+    <body>
+    {{stud}} is {{attend}}
+    <div class="container" style="padding-top:20px;">
+    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4" style="margin-top:20px;">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/teacher_profile/" style="color:black;font-family: cursive;">Home</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color:black;font-family: cursive;">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:black;font-family: cursive;">{{username}}</li>
+          </ol>
+        </nav>
+    </div>
+
+    <table class="table table-hover table-dark shadow p-3 mb-5 bg-white rounded" style="width:70%; margin:50px 150px 150px 150px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Ad.no</th>
+      <th scope="col">Attendence</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for stud in stud %}
+    <tr>
+      <th scope="row">{{stud.id}}</th>
+      <td>{{stud.username}}</td>
+      <td>{{stud.reg_no}}</td>
+      <td><a href="" style="color:white;text-decoration:none;">Attendence Deatils</a> </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+     <script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/script.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

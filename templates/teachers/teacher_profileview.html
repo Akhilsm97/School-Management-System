@@ -1,0 +1,193 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_view.css' %}">
+
+    <style>
+      body {
+    background: linear-gradient(to bottom, #000066 0%, #cc99ff 100%);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+    </style>
+</head>
+
+<body>
+      <!------------------------------table data---------------------------->
+       <section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/teacher_profile/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{teacher_reg.username}}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4 shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card-body text-center">
+            <img src="{{teacher_reg.teacher_img.url}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{teacher_reg.username}}</h5>
+            <p class="text-muted mb-1">{{teacher_app.teacher_id}}</p>
+            <p class="text-muted mb-4">{{teacher_reg.department_alloted}}</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary" ><a href="#" style="text-decoration:none;">Edit</a></button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <div class="row" style="padding:30px;">
+              <div class="col-md-6" style="margin-bottom:10px;">
+                <label ><b>Alloted Class</b></label>
+              </div>
+               <div class="col-md-6">
+                <label>{{teacher_app.alloted_class}}</label>
+              </div>
+              <div class="col-md-6" style="margin-bottom:10px;">
+                <label ><b>Department</b></label>
+              </div>
+               <div class="col-md-6" style="margin-bottom:10px;">
+                <label>{{teacher_app.department}}</label>
+              </div>
+              <div class="col-md-6"style="margin-bottom:10px;">
+                <label ><b>Department Alloted</b></label>
+              </div>
+               <div class="col-md-6" style="margin-bottom:10px;">
+                <label>{{teacher_app.department_alloted}}</label>
+              </div>
+              <div class="col-md-6"style="margin-bottom:10px;">
+                <label ><b>Approval Manager</b></label>
+              </div>
+               <div class="col-md-6" style="margin-bottom:10px;">
+                <label>{{teacher_app.approval_manager}}</label>
+              </div>
+              <div class="col-md-6"style="margin-bottom:10px;">
+                <label ><b>Joined date</b></label>
+              </div>
+               <div class="col-md-6" style="margin-bottom:10px;">
+                <label>{{teacher_app.approval_date}}</label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{teacher_reg.username}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{teacher_reg.mail}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{teacher_reg.mob_no}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Dob</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{teacher_reg.dob}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{teacher_reg.address}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0 shadow p-3 mb-5 bg-white rounded">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">About</span> <b>Qualification</b>
+                </p>
+                <h6><b>High School</b></h6>
+                <p style="padding:15px;"><b>@</b> &nbsp;{{teacher_reg.high_school}}&ensp;<b>in</b> &ensp;{{teacher_reg.year_attend1}}</p>
+                 <hr>
+                <h6><b>Graduation</b></h6>
+                <p style="padding:15px;"><b>-</b> &nbsp;{{teacher_reg.degree1}}&ensp;<b>from</b> &ensp;{{teacher_reg.college_name}} &emsp; <b>in</b>&emsp; {{teacher_reg.year_attend2}}</p>
+                 <hr>
+                <h6><b>Post Graduation</b></h6>
+               <p style="padding:15px;"><b>-</b> &nbsp;{{teacher_reg.degree2}}&ensp;<b>from</b> &ensp;{{teacher_reg.college_name2}} &emsp; <b>in</b>&emsp; {{teacher_reg.year_attend3}}</p>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Self
+                </p>
+                <h6><b>Hobbies</b></h6>
+                <p style="padding:25px;"> &nbsp;{{teacher_reg.hobbies}}</p>
+                 <hr>
+                <h6><b>Skills</b></h6>
+                <p style="padding:25px;"> &nbsp;{{teacher_reg.skills}}</p>
+                 <hr>
+                <h6><b>Blood Group</b></h6>
+               <p style="padding:25px;">&nbsp;{{teacher_reg.blood_group}}</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>ml>

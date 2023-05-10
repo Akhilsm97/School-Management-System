@@ -1,0 +1,64 @@
+.btn{
+   font-size:15px;
+   font-weight:bold;
+   text-align:center;
+   font-family:Arial;
+}
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 45px;
+      margin-left:400px;
+      margin-top:100px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.prof_pic{
+ border-radius:50%
+}
+.input_style{
+margin-top:20px;
+margin-left:-10px;
+font-size:20px;
+background-color:white;
+color:black;
+width:250px;
+height:50px;
+font-weight:bold;
+text-align:center;
+border:none;
+
+}
+.input_styles{
+font-size:20px;
+background-color:white;
+color:black;
+width:140px;
+height:50px;
+font-weight:bold;
+text-align:center;
+border:none;
+margin-left:-5px;
+
+}

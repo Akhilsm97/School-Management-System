@@ -1,0 +1,127 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Student details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/student_details_1/css/student_details_1.css' %}">
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <br>
+<a href="/admins/" style="margin-left:1200px; text-decoration:none; background-color:green;padding:10px; color:white; border-radius:5px;">Back</a>
+
+ <section id="section_id">
+     <div class="container-fluid container_style" style="padding:100px 10px 20px 280px;">
+         <div class="row">
+             <div class="col-md-6">
+                 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px;background: linear-gradient(to bottom, #ffcccc 0%, #ff99cc 100%);">
+                     <div class="row g-0">
+                            <div class="col-md-4"><h3 class="header">Lower primary</h3>
+                            <h3 class="headers">(I-IV)</h3></div>
+                            <div class="col-md-8">
+                                 <div class="card-body">
+                                    <h5 class="card-title">Students Registered</h5>
+                                     <p class="card-text card_text  animate__animated animate__zoomIn  animate__delay-1s">{{lower_primary.department__count}}</p>
+                                     <p class="card-text"><small><a href="/lower_primary/Lower primary" class="view_details" style="background: linear-gradient(to bottom, #99ff33 0%, #ff3300 100%);border-radius:10px;padding:10px;color:black;font-weight:bold;text-decoration:none;">View Student</a></small></p>
+                                 </div>
+                            </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px;background: linear-gradient(to bottom, #66ffff 0%, #ff9900 100%);">
+                     <div class="row g-0">
+                            <div class="col-md-4"><h3 class="header">Upper primary</h3>
+                            <h3 class="headers">(V-VII)</h3></div>
+                            <div class="col-md-8">
+                                 <div class="card-body">
+                                    <h5 class="card-title">Students Registered</h5>
+                                     <p class="card-text card_text animate__animated animate__zoomIn  animate__delay-1s">{{upper_primary.department__count}}</p>
+                                     <p class="card-text"><small><a href="/upper_primary/Upper primary" style="background: linear-gradient(to bottom, #99ff33 0%, #ff3300 100%);border-radius:10px;padding:10px;color:black;font-weight:bold;text-decoration:none;">View Student</a></small></p>
+                                 </div>
+                            </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px; background: linear-gradient(to bottom left, #0099cc 0%, #ff66ff 100%);">
+                     <div class="row g-0">
+                            <div class="col-md-4"><h3 class="header">Secondary</h3>
+                            <h3 class="headers">(VIII-X)</h3>
+                            </div>
+                            <div class="col-md-8">
+                                 <div class="card-body">
+                                    <h5 class="card-title">Students Registered</h5>
+                                     <p class="card-text card_text animate__animated animate__zoomIn  animate__delay-1s">{{secondary.department__count}}</p>
+                                     <p class="card-text"><small><a href="/secondary/Secondary" style="background: linear-gradient(to bottom, #99ff33 0%, #ff3300 100%);border-radius:10px;padding:10px;color:black;font-weight:bold;text-decoration:none;">View Student</a></small></p>
+                                 </div>
+                            </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="card  mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px; background: linear-gradient(to top right, #006600 0%, #cc6699 100%);">
+                     <div class="row g-0">
+                            <div class="col-md-4 " ><h3 class="header">Higher Secondary</h3>
+                            <h3 class="headers">(XI-XII)</h3></div>
+                            <div class="col-md-8">
+                                 <div class="card-body">
+                                    <h5 class="card-title">Students Registered</h5>
+                                     <p class="card-text card_text animate__animated animate__zoomIn  animate__delay-1s">{{higher_secondary.department__count}}</p>
+                                     <p class="card-text"><small><a href="/higher_secondary/Higher Secondary" style="background: linear-gradient(to bottom, #99ff33 0%, #ff3300 100%);border-radius:10px;padding:10px;color:black;font-weight:bold;text-decoration:none;">View Student</a></small></p>
+                                 </div>
+                            </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+     </div>
+ </section>
+
+      <!------------------------------table data---------------------------->
+
+ <div class="container">
+     <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+      <th scope="col">Class</th>
+      <th scope="col">Application Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for all_data in all_data %}
+    <tr>
+      <th scope="row">{{all_data.id}}</th>
+      <td>{{all_data.stud_name1}}</td>
+      <td>{{all_data.stud_name2}}</td>
+      <td>{{all_data.address}}</td>
+      <td>{{all_data.department}}</td>
+      <td>{{all_data.classes}}</td>
+      <td>{{all_data.application_status}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+ </div>
+
+
+</body>
+
+<script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'Bootstrap/js/script.js' %}"></script>
+
+
+</html>

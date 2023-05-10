@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{username_user}}</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script rel="script" src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <link href="{% static 'add_teachers/css/student_profile/home.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+      <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'add_teachers/css/student_profile/teacher_profile.css' %}" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+</head>
+    <body>
+
+        <div class="main-container">
+
+            <!-- HEADER -->
+            <header class="block">
+                <ul class="header-menu horizontal-list">
+                    <li>
+                        <a class="header-menu-tab" href="#1"><span class="icon entypo-cog scnd-font-color"></span>Settings</a>
+                    </li>
+                    <li>
+                        <a class="header-menu-tab" href="/teacher_profileview/{{teacher_details.username}}"><span class="icon fontawesome-user scnd-font-color"></span>Profile</a>
+                    </li>
+                    <li>
+                        <a class="header-menu-tab" href="#3"><span class="icon fontawesome-envelope scnd-font-color"></span>Messages</a>
+                        <a class="header-menu-number" href="#4">5</a>
+                    </li>
+                    <li>
+                        <a class="header-menu-tab" href="/class_fac/"> <i class='fa fa-users scnd-font-color'></i>&emsp;Faculties</a>
+                    </li>
+                </ul>
+                <div class="profile-menu">
+                    <p> <a href="/admin_logout/"><span class="entypo-down-open scnd-font-color"></span> Logout</a></p>
+                    <div class="profile-picture small-profile-picture">
+                        <img width="40px" alt="Anne Hathaway picture" src="{{teacher_details.teacher_img.url}}">
+                    </div>
+                </div>
+            </header>
+
+            <!-- LEFT-CONTAINER -->
+            <div class="left-container container">
+                <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+                    <h2 class="titular">MENU BOX</h2>
+                    <ul class="menu-box-menu">
+
+                        <li>
+                            <a class="menu-box-tab" id="verify" href="/verify_stud/{{teacher_details.username}}"><span class="icon entypo-paper-plane scnd-font-color"></span>Verify Students<div class="menu-box-number">{{verify_studss}}</div></a>
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" id ="student" href="/students/{{teacher_details.username}}"><span class="icon entypo-calendar scnd-font-color"></span>Students<div class="menu-box-number">{{student}}</div></a>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                                <a class="menu-box-tab " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span class="icon entypo-calendar scnd-font-color"></span> Attendences
+                                </a>
+                                    <div class="dropdown-menu animate__animated animate__fadeInUp" aria-labelledby="dropdownMenuButton" style="border-radius:5pxrk;margin-left:30px;width:200px;background-color:lightgreen;color:white;">
+                                        <a class="dropdown-item" href="/attendence/" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;color:white;font-weight:bold;">Take Attendance</a><hr>
+                                        <a class="dropdown-item" href="/attendance_record/" id="att_rec" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;color:white;font-weight:bold;">Attendance Record</a><hr>
+                                        <a class="dropdown-item" href="#" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;color:white;font-weight:bold;">Something else here</a><hr>
+                                    </div>
+                           </div>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <a class="menu-box-tab " type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span class="icon entypo-chart-line scnd-font-color"></span>Internal Marks
+                                </a>
+                                    <div class="dropdown-menu animate__animated animate__swing " aria-labelledby="dropdownMenuButton1" style="border-radius:5%;margin-left:30px;width:200px;">
+                                       <a class="dropdown-item" href="/mark_upload/{{username_user}}" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;">Enter Marks</a><hr>
+                                        <a class="dropdown-item" href="/mark_details/" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;">Mark Details</a><hr>
+                                        <a class="dropdown-item" href="#" style="text-decoration:none;font-family: ui-sans-serif;font-size:20px;">Something else here</a><hr>
+                                    </div>
+                           </div>
+
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" href="/faculty_corner/" id="fac_cor"><span class="icon fontawesome-envelope scnd-font-color"></span>Faculty Corner<div class="menu-box-number">24</div></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="donut-chart-block block"> <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
+                    <h2 class="titular">OS AUDIENCE STATS</h2>
+                    <div class="donut-chart">
+                        <!-- DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
+                        <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
+                        <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
+                        <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
+                        <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
+                        <!-- END DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->    
+                        <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p> 
+                    </div>
+                    <ul class="os-percentages horizontal-list">
+                        <li>
+                            <p class="ios os scnd-font-color">iOS</p>
+                            <p class="os-percentage">21<sup>%</sup></p>
+                        </li>
+                        <li>
+                            <p class="mac os scnd-font-color">Mac</p>
+                            <p class="os-percentage">48<sup>%</sup></p>
+                        </li>
+                        <li>
+                            <p class="linux os scnd-font-color">Linux</p>
+                            <p class="os-percentage">9<sup>%</sup></p>
+                        </li>
+                        <li>
+                            <p class="win os scnd-font-color">Win</p>
+                            <p class="os-percentage">32<sup>%</sup></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="line-chart-block block clear"> <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
+                    <div class="line-chart">
+                      <!-- LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
+                        <div class='grafico'>
+                           <ul class='eje-y'>
+                             <li data-ejeY='30'></li>
+                             <li data-ejeY='20'></li>
+                             <li data-ejeY='10'></li>
+                             <li data-ejeY='0'></li>
+                           </ul>
+                           <ul class='eje-x'>
+                             <li>Apr</li>
+                             <li>May</li>
+                             <li>Jun</li>
+                           </ul>
+                             <span data-valor='25'>
+                               <span data-valor='8'>
+                                 <span data-valor='13'>
+                                   <span data-valor='5'>   
+                                     <span data-valor='23'>   
+                                     <span data-valor='12'>
+                                         <span data-valor='15'>
+                                         </span></span></span></span></span></span></span>
+                        </div>
+                        <!-- END LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
+                    </div>
+                    <ul class="time-lenght horizontal-list">
+                        <li><a class="time-lenght-btn" href="#14">Week</a></li>
+                        <li><a class="time-lenght-btn" href="#15">Month</a></li>
+                        <li><a class="time-lenght-btn" href="#16">Year</a></li>
+                    </ul>
+                    <ul class="month-data clear">
+                        <li>
+                            <p>APR<span class="scnd-font-color"> 2013</span></p>
+                            <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
+                        </li>
+                        <li>
+                            <p>MAY<span class="scnd-font-color"> 2013</span></p>
+                            <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
+                        </li>
+                        <li>
+                            <p>JUN<span class="scnd-font-color"> 2013</span></p>
+                            <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="media block"> <!-- MEDIA (LEFT-CONTAINER) -->
+                    <div id="media-display">
+                        <a class="media-btn play" href="#23"><span class="fontawesome-play"></span></a>
+                    </div>
+                    <div class="media-control-bar">
+                        <a class="media-btn play" href="#23"><span class="fontawesome-play scnd-font-color"></span></a>
+                        <p class="time-passed">4:15 <span class="time-duration scnd-font-color">/ 9:23</span></p>
+                        <a class="media-btn volume" href="#24"><span class="fontawesome-volume-up scnd-font-color"></span></a>
+                        <a class="media-btn resize" href="#25"><span class="fontawesome-resize-full scnd-font-color"></span></a>
+                    </div>
+                </div>
+                <ul class="social horizontal-list block"> <!-- SOCIAL (LEFT-CONTAINER) -->
+                    <li class="facebook"><p class="icon"><span class="zocial-facebook"></span></p><p class="number">248k</p></li>
+                    <li class="twitter"><p class="icon"><span class="zocial-twitter"></span></p><p class="number">30k</p></li>
+                    <li class="googleplus"><p class="icon"><span class="zocial-googleplus"></span></p><p class="number">124k</p></li>
+                    <li class="mailbox"><p class="icon"><span class="fontawesome-envelope"></span></p><p class="number">89k</p></li>
+                </ul>
+            </div>
+
+            <!-- MIDDLE-CONTAINER -->
+            <div class="middle-container container">
+                <div class="profile block"> <!-- PROFILE (MIDDLE-CONTAINER) -->
+                    <a class="add-button" href="#28" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="icon entypo-plus scnd-font-color"></span></a>
+                    <div class="profile-picture big-profile-picture clear">
+                        <img width="150px" alt="Anne Hathaway picture" src="{{teacher_details.teacher_img.url}}" >
+                    </div>
+                    <h1 class="user-name">{{username_user}}</h1>
+                    <div class="profile-description">
+                        <p class="scnd-font-color">{{teacher_details.per_comp}}</p>
+                    </div>
+                    <ul class="profile-options horizontal-list">
+                        <li><a class="comments" href="#40"><p><span class="icon fontawesome-comment-alt scnd-font-color"></span>23</li></p></a>
+                        <li><a class="views" href="#41"><p><span class="icon fontawesome-eye-open scnd-font-color"></span>841</li></p></a>
+                        <li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</li></p></a>
+                    </ul>
+                </div>
+                <div class="weather block clear"> <!-- WEATHER (MIDDLE-CONTAINER) -->
+                    <h2 class="titular"><span class="icon entypo-location"></span><strong>CLUJ-NAPOCA</strong>/RO</h2>
+                    <div class="current-day">
+                        <p class="current-day-date">FRI 29/06</p>
+                        <p class="current-day-temperature">24º<span class="icon-cloudy"></span></p>
+                    </div>
+                    <ul class="next-days">
+                        <li>
+                            <a href="#43">
+                                <p class="next-days-date"><span class="day">SAT</span> <span class="scnd-font-color">29/06</span></p>
+                                <p class="next-days-temperature">25º<span class="icon icon-cloudy scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#44">
+                                <p class="next-days-date"><span class="day">SUN</span> <span class="scnd-font-color">30/06</span></p>
+                                <p class="next-days-temperature">22º<span class="icon icon-cloudy2 scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#45">
+                                <p class="next-days-date"><span class="day">MON</span> <span class="scnd-font-color">01/07</span></p>
+                                <p class="next-days-temperature">24º<span class="icon icon-cloudy2 scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#46">
+                                <p class="next-days-date"><span class="day">TUE</span> <span class="scnd-font-color">02/07</span></p>
+                                <p class="next-days-temperature">26º<span class="icon icon-cloudy scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <p class="next-days-date"><span class="day">WED</span> <span class="scnd-font-color">03/07</span></p>
+                                <p class="next-days-temperature">27º<span class="icon icon-sun scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <p class="next-days-date"><span class="day">THU</span> <span class="scnd-font-color">04/07</span></p>
+                                <p class="next-days-temperature">29º<span class="icon icon-sun scnd-font-color"></span></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tweets block"> <!-- TWEETS (MIDDLE-CONTAINER) -->
+                    <h2 class="titular"><span class="icon zocial-twitter"></span>LATEST TWEETS</h2>
+                    <div class="tweet first">
+                        <p>Ice-cream trucks only play music when out of ice-cream. Well played dad. On <a class="tweet-link" href="#17">@Quora</a></p>
+                        <p><a class="time-ago scnd-font-color" href="#18">3 minutes ago</a></p>
+                    </div>
+                    <div class="tweet">
+                        <p>We are in the process of pushing out all of the new CC apps! We will tweet again once they are live <a class="tweet-link" href="#19">#CreativeCloud</a></p>
+                        <p><a class="scnd-font-color" href="#20">6 hours ago</a></p>
+                    </div>
+                </div> 
+                <ul class="social block"> <!-- SOCIAL (MIDDLE-CONTAINER) -->
+                    <li><a href="#50"><div class="facebook icon"><span class="zocial-facebook"></span></div><h2 class="facebook titular">SHARE TO FACEBOOK</h2></li></a>
+                    <li><a href="#51"><div class="twitter icon"><span class="zocial-twitter"></span></div><h2 class="twitter titular">SHARE TO TWITTER</h2></li></a>
+                    <li><a href="#52"><div class="googleplus icon"><span class="zocial-googleplus"></span></div><h2 class="googleplus titular">SHARE TO GOOGLE+</h2></li></a>
+                </ul>
+            </div>
+
+            <!-- RIGHT-CONTAINER -->
+            <div class="right-container container">
+                <div class="join-newsletter block"> <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
+                    <h2 class="titular">QUICK MESSAGES</h2>
+                    <div class="input-container">
+                        <input type="text" placeholder="Write Message Here" class="email text-input">
+                        <div class="input-icon envelope-icon-newsletter"><span class="fontawesome-envelope scnd-font-color"></span></div>
+                    </div>
+                    <a class="subscribe button" href="#21">SEND MESSAGE</a>
+                </div>
+                <div class="account block"> <!-- ACCOUNT (RIGHT-CONTAINER) -->
+                    <h2 class="titular">SIGN IN TO YOUR ACCOUNT</h2>
+                    <div class="input-container">
+                        <input type="text" placeholder="yourname@gmail.com" class="email text-input">
+                        <div class="input-icon envelope-icon-acount"><span class="fontawesome-envelope scnd-font-color"></span></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="Password" class="password text-input">
+                        <div class="input-icon password-icon"><span class="fontawesome-lock scnd-font-color"></span></div>
+                    </div>
+                    <a class="sign-in button" href="#22">SIGN IN</a>
+                    <p class="scnd-font-color">Forgot Password?</p>
+                    <a class="fb-sign-in" href="58">
+                        <p><span class="fb-border"><span class="icon zocial-facebook"></span></span>Sign in with Facebook</p>
+                    </a>
+                </div>
+                <div class="loading block"> <!-- LOADING (RIGHT-CONTAINER) -->
+                    <div class="progress-bar downloading"></div>
+                    <p><span class="icon fontawesome-cloud-download scnd-font-color"></span>Downloading...</p>
+                    <p class="percentage">81<sup>%</sup></p>
+                    <div class="progress-bar uploading"></div>
+                    <p><span class="icon fontawesome-cloud-upload scnd-font-color"></span>Uploading...</p>
+                    <p class="percentage">43<sup>%</sup></p>
+                </div>
+                <div class="calendar-day block"> <!-- CALENDAR DAY (RIGHT-CONTAINER) -->
+                    <div class="arrow-btn-container">
+                        <a class="arrow-btn left" href="#200"><span class="icon fontawesome-angle-left"></span></a>
+                        <h2 class="titular">WEDNESDAY</h2>
+                        <a class="arrow-btn right" href="#201"><span class="icon fontawesome-angle-right"></span></a>
+                    </div>
+                        <p class="the-day">26</p>
+                        <a class="add-event button" href="#27">ADD EVENT</a>
+                </div>
+                <div class="calendar-month block"> <!-- CALENDAR MONTH (RIGHT-CONTAINER) -->
+                    <div class="arrow-btn-container">
+                        <a class="arrow-btn left" href="#202"><span class="icon fontawesome-angle-left"></span></a>
+                        <h2 class="titular">APRIL 2013</h2>
+                        <a class="arrow-btn right" href="#203"><span class="icon fontawesome-angle-right"></span></a>
+                    </div>
+                    <table class="calendar">
+                        <thead class="days-week">
+                            <tr>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>R</th>
+                                <th>F</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a class="scnd-font-color" href="#100">1</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="scnd-font-color" href="#101">2</a></td>
+                                <td><a class="scnd-font-color" href="#102">3</a></td>
+                                <td><a class="scnd-font-color" href="#103">4</a></td>
+                                <td><a class="scnd-font-color" href="#104">5</a></td>
+                                <td><a class="scnd-font-color" href="#105">6</a></td>
+                                <td><a class="scnd-font-color" href="#106">7</a></td>
+                                <td><a class="scnd-font-color" href="#107">8</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="scnd-font-color" href="#108">9</a></td>
+                                <td><a class="scnd-font-color" href="#109">10</a></td>
+                                <td><a class="scnd-font-color" href="#110">11</a></td>
+                                <td><a class="scnd-font-color" href="#111">12</a></td>
+                                <td><a class="scnd-font-color" href="#112">13</a></td>
+                                <td><a class="scnd-font-color" href="#113">14</a></td>
+                                <td><a class="scnd-font-color" href="#114">15</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="scnd-font-color" href="#115">16</a></td>
+                                <td><a class="scnd-font-color" href="#116">17</a></td>
+                                <td><a class="scnd-font-color" href="#117">18</a></td>
+                                <td><a class="scnd-font-color" href="#118">19</a></td>
+                                <td><a class="scnd-font-color" href="#119">20</a></td>
+                                <td><a class="scnd-font-color" href="#120">21</a></td>
+                                <td><a class="scnd-font-color" href="#121">22</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="scnd-font-color" href="#122">23</a></td>
+                                <td><a class="scnd-font-color" href="#123">24</a></td>
+                                <td><a class="scnd-font-color" href="#124">25</a></td>
+                                <td><a class="today" href="#125">26</a></td>
+                                <td><a href="#126">27</a></td>
+                                <td><a href="#127">28</a></td>
+                                <td><a href="#128">29</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#129">30</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> <!-- end calendar-month block --> 
+            </div> <!-- end right-container -->
+        </div> <!-- end main-container -->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+                <form method="post" action="/update_teacher_profile/{{teacher_details.username}}" enctype="multipart/form-data">
+                    {% csrf_token %}
+          <div class="container_fluid container_style">
+              <div class="row">
+                  <div class="col-md-4 col_1">
+                      <div class="img_bor">
+                          <img id="file-ip-1-preview" class="img_style img-thumbnail" src="{{teacher_details.teacher_img.url}}">
+                      </div>
+                  </div>
+                  <div class="col-md-4 front">
+                      <h2 style="color:black;"><b>{{username_user}}</b></h2>
+                  </div>
+                   <div class="col-md-4 front" style="margin-left;-20px;">
+
+                  </div>
+              </div>
+               <div class="row 2nd_row" style="margin-left:230px; margin-top:-150px;">
+                   <div class="col-md-6 2n_col">
+                    <label class="la_style">Personal Competancies</label>
+                       <textarea name="per_comp" class="form-control text" >{{teacher_details.per_comp}}</textarea>
+                   </div>
+                   <div class="col-md-6 2n_col">
+                    <label class="la_style">Teaching Achievment</label>
+                       <input type="text" name="teac_ach" value="{{teacher_details.teac_ach}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;color:black;" class="form-control text1">
+                   </div>
+               </div>
+
+                <div class="row 2nd_row" style="margin-left:230px; ">
+                   <div class="col-md-6 2n_col">
+                    <label class="la_style">Mail Id</label>
+                       <input type="text" name="mail" class="form-control" value="{{teacher_details.mail}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;width:300px;color:black;">
+                   </div>
+                   <div class="col-md-6 2n_col">
+                   <label class="la_style">Mob No</label>
+                       <input type="text" name="mob_no" class="form-control" value="{{teacher_details.mob_no}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;width:300px;color:black;">
+                   </div>
+               </div>
+
+               <div class="row 2nd_row" style="margin-left:230px; ">
+                   <div class="col-md-6 2n_col">
+                    <label class="la_style">Address</label>
+                       <textarea name="address" class="form-control text" >{{teacher_details.address}}</textarea>
+                   </div>
+                   <div class="col-md-6 2n_col">
+                   <label class="la_style">Pin Code</label>
+                       <input type="text" name="pin_code" class="form-control" value="{{teacher_details.pin_code}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;width:300px;color:black;">
+                   </div>
+               </div>
+
+               <div class="row 2nd_row" style="margin-left:230px; ">
+                   <div class="col-md-6 2n_col">
+                    <label class="la_style">City</label>
+                        <input type="text" name="city" class="form-control" value="{{teacher_details.city}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;width:300px;color:black;">
+                   </div>
+                   <div class="col-md-6 2n_col">
+                   <label class="la_style">State</label>
+                       <input type="text" name="state" class="form-control" value="{{teacher_details.state}}" style="background:white; border: solid #C0C0C0 1px; margin-top:5px;margin-left:-1px;width:300px;color:black;">
+                   </div>
+               </div>
+
+              <button type="submit" name="submit" class="btn btn-success"> Save changes</button>
+          </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Attendences Modal -->
+<div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabels" aria-hidden="true">
+  <div class="modal-dialog  modal-xl" >
+    <div class="modal-content" style="background-color:#F1F1F1;">
+      <div class="modal-header" style="color:black;">
+        <h5 class="modal-title" id="exampleModalLabels">Take Attendences</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <form action="#" method="post">
+         <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="height:260px;width:90%;">
+             <div class="row" style="height:150px;padding:20px; margin:30px; width:90%;">
+                 <div class="col-md-6" style="border: solid blue 2px;height:100px;">
+                    <div class="row">
+                      <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Class</b></label>
+                      </div>
+                      <div class="col-md-4" style="margin-left:-10px;">
+                          <select type="text" id="myselection" class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;" >
+                                <option>---Select---</option>
+                                    <option value="yellow">Student Details here</option>
+
+                          </select>
+                      </div>
+                    </div>
+                 </div>
+                  <div class="col-md-6" style="border: solid blue 2px;height:100px;">
+                      <div class="row">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="date" id="myInput" oninput="myFunction()" class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;" >
+                        </div>
+
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+       </form>
+                        <div class="yellow msg">
+                            <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="width:90%;">
+                                <h4 style="text-align:center;"><b>Attendence</b></h4>
+                               <div class="col-md-4"style="margin-left:150px; margin-top:20px; font-size:18px;" >
+                                   <p style="color:black;font-family: ui-sans-serif;font-size:18px;">Teacher : <b>{{username_user}}</b></p>
+                               </div>
+                                <div class="col-md-4" style="margin-left:150px; margin-top:20px;font-size:18px;" >
+                                    <p style="color:black;font-family: ui-sans-serif;font-size:18px;">Class: <b>{{cls}}</b></p>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4" style="margin-left:150px; margin-top:10px;font-size:18px; width:80px;">
+                                      <p style="color:black;font-family: ui-sans-serif;font-size:18px;">Date :</p>
+                                    </div>
+
+                                    <div class="col-md-4" style="margin-left:-25px; margin-top:5px;font-size:18px;width:180px;">
+                                        <input type="text" name="date" class="form-control" readonly id="dat" style="width:150px; border:white;background:white;color:black;margin-left:-20px;margin-top:-7px;font-weight:bold;font-family: ui-sans-serif;font-size:18px;">
+                                    </div>
+                                </div>
+
+
+
+
+
+                                                        <div class="row" style="padding:20px;">
+
+                                                            {% for stud_tea in stud_tea %}
+
+                                                            <div class="col-md-4" style=" padding:20px;">
+                                                                <div class="box shadow-lg" style="width:250px;">
+                                                                    <img src="{{stud_tea.profie_pic.url}}" class="img-thumbnail" style="width:150px; height:150px; border-radius:50%;margin-left:50px;margin-top:5px;">
+                                                                     <div class="row">
+
+                                                                         <p style="color:black;text-align:center;font-weight:bold;font-family: ui-sans-serif;font-size:18px;">{{stud_tea.username}}</p>
+                                                                         <p style="color:black;text-align:center;font-weight:bold;font-family: ui-sans-serif;font-size:18px;">{{stud_tea.reg_no}}</p>
+                                                                         <input type="text" name="reg_no" class="form-control" readonly id="data"  style="width:150px; border:white;background:white;color:black;margin-left:-30px;">
+                                                                         <a href="#" style="color:black;" data-toggle="modal" data-target="#exampleModalCenter">Attendence</a>
+
+
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+
+                                                             
+                                                        </div>
+
+
+
+                            </div>
+                        </div>
+          </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+         <!==============Profile Image ========>
+<script type="text/javascript">
+  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("select").change(function(){
+            $(this).find("option:selected").each(function(){
+                var val = $(this).attr("value");
+                if(val){
+                    $(".msg").not("." + val).hide();
+                    $("." + val).show();
+                } else{
+                    $(".msg").hide();
+                }
+            });
+        }).change();
+    });
+    </script>
+
+
+        <script>
+function myFunction() {
+  var x = document.getElementById("myInput").value;
+
+  document.getElementById("dat").value = document.getElementById("myInput").value
+  document.getElementById("data").value = document.getElementById("myInput").value
+}
+</script>
+
+
+
+
+
+     <script src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'Bootstrap/js/jquerys.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/script.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

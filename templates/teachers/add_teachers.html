@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Application- Teacher</title>
+
+    <link href="{% static 'add_teachers/css/Bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'add_teachers/css/Add_Stud/add_stud.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{% static 'add_teachers/js/bootstrap.bundle.min.js' %}" ></script>
+    <script src="{% static 'add_teachers/js/bootstrap.min.js' %}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperadd_teachers/js/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'add_teachers/js/counter.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.add_teachers/css4.1.1/animate.min.css"/>
+</head>
+</head>
+<body>
+
+
+     <div class="container container_style">
+       <form method="post" action="/add_teachers/" enctype="multipart/form-data">
+           {% csrf_token %}
+               <h3 class="main_header">Teacher Application</h3>
+               <div class="row row_style">
+                   <div class="col-md-4">
+                        
+                       <div class="container con">
+                                  <img id="file-ip-1-preview" style="width:150px; height:220px; margin-left:-26px; margin-top:-3px;">
+                                     <label for="file-ip-1" class="up_label"><img src="{% static 'add_teachers/images/upload.png' %}" class="up_img">Upload Image</label>
+                                    <input type="file" id="file-ip-1" name="teacher_img" accept="image/*" onchange="showPreview(event);" hidden>
+                       </div>
+                        
+                   </div>
+                      <div class="col-md-4 sec_div">
+                          
+                          <div class="sec_inside_div">
+                             <label for="" class="" > First Name</label>&nbsp;&nbsp;&nbsp;
+                              <input type="text" name="teacher_name1" class="form-control input_sty" required >
+                          </div>
+                           <div class="sec_inside_div">
+                             <label for="" class="" > Date of Birth</label>
+                              <input type="date" name="dob" class="form-control input_sty" required >
+                          </div>
+                          <div class="sec_inside_divs">
+                          <label for="" class="" > Gender</label>&nbsp;&nbsp;
+                              <input type="radio" id="html" name="Gender" value="Male" class="gender_style" >
+                              <label for="html">MALE</label><br>
+                              <input type="radio" id="html" name="Gender" value="Female" class="gender_style1" >
+                              <label for="html">FEMALE</label><br>
+                              <input type="radio" id="html" name="Gender" value="Others" class="gender_style1" >
+                              <label for="html">OTHERS</label>
+                          </div>
+                            
+
+                      </div>
+
+
+                      <div class="col-md-4 third_div">
+                          <form action="" method="post" enctype="multipart/form-data">
+                        <div class="third_inside_div">
+                            <label for="" class=""> Last Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="teacher_name2" class="form-control input_stys" required >
+                         </div>
+                              <div class="third_inside_div">
+                            <label for="" class="">Siblings Details</label>
+                            <input type="text" name="siblings" class="form-control input_stys" required >
+                         </div>
+                               <div class="third_inside_div">
+                            <label for="" class="">Position for which you are applying</label>
+                            <select name="position" class="form-control input_stys" required >
+                                <option value="">--Select--</option>
+                                <option value="Lower primary">Lower Primary</option>
+                                <option value="Upper primary">Upper Primary</option>
+                                <option value="Secondary">Secondary</option>
+                                <option value="Higher Secondary">Higher Secondary</option>
+                                <option value="All Department">All Department</option>
+                            </select>
+                         </div>
+                            
+                     </div>
+
+               </div>
+               <hr>
+
+               <!--------------------Adademic Information ----------->
+
+               <h5 class="parents_info_header">Adademic Information</h5>
+
+               <div class="row parent_row">
+                   <div class="col-md-4">
+                       
+                        <div class="parent_inside_div">
+                             <label for="" class="">High School Name</label>
+                             <input type="text" name="high_school" class="form-control father_input" required>
+                        </div>
+                           
+                   </div>
+
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Years Attended</label>
+                             <input type="text" name="year_attend1" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class=""><b>Graduated?</b></label><br>
+                             <input type="radio" id="html" name="graduated1" value="yes" class="gender_style" >
+                              <label for="html">Yes</label><br>
+                              <input type="radio" id="html" name="graduated1" value="no" class="gender_style1" >
+                              <label for="html">No</label><br>
+                        </div>
+                          
+
+                   </div>
+
+                   <div class="parent_inside_div">
+                             <label for="" class="">Degree / Major</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="degree1" class="form-control father_input" required style="width:800px;margin-bottom:20px; ">
+                   </div>
+
+
+                   <div class="col-md-4">
+
+                        <div class="parent_inside_div">
+                             <label for="" class="">College Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="college_name" class="form-control father_input" required>
+                        </div>
+                           
+                   </div>
+
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Years Attended</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="year_attend2" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                            <label for="" class=""><b>Graduated?</b></label><br>
+                             <input type="radio" id="html" name="graduated2" value="yes" class="gender_style" >
+                              <label for="html">Yes</label><br>
+                              <input type="radio" id="html" name="graduated2" value="no" class="gender_style1" >
+                              <label for="html">No</label><br>
+                        </div>
+                          
+                   </div>
+                        
+                   <div class="parent_inside_div" style="margin-bottom:50px;">
+                              <label for="" class="">Degree / Major</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="text" name="degree2" class="form-control father_input" required style="width:800px;margin-bottom:20px; ">
+                   </div>
+                        
+
+                   <div class="col-md-4">
+                       
+                        <div class="parent_inside_div">
+                             <label for="" class="">Correspondence School</label>
+                             <input type="text" name="college_name2" class="form-control father_input" required>
+                        </div>
+                           
+                   </div>
+
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Year Attended</label>
+                             <input type="text" name="year_attend3" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                            <label for="" class=""><b>Graduated?</b></label><br>
+                             <input type="radio" id="html" name="graduated3" value="yes" class="gender_style" >
+                              <label for="html">Yes</label><br>
+                              <input type="radio" id="html" name="graduated3" value="no" class="gender_style1" >
+                              <label for="html">No</label><br>
+                        </div>
+                          
+                   </div>
+               </div>
+                    <hr>
+
+                    <!==================Teaching Experience============>
+                   <h5 class="parents_info_header">Teaching Experience</h5>
+                    <p class="teach_exp">Please include dates employed, Employer name, address and phone number, Position, Salary, Wage, Supervisor's name and phone number,<br> and your reason for leaving.</p>
+
+
+
+         <div class="row comm_row">
+                   
+                   <div class="parent_inside_div">
+                             <label for="" class="">Most recent position</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="recent_position1" class="form-control address_input" required></textarea>
+                   </div>
+                            <div class="parent_inside_div">
+                             <label for="" class="">2nd recent position</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="recent_position2" class="form-control address_input"></textarea>
+                            </div>
+
+                           <div class="parent_inside_div">
+                             <label for="" class="">3rd recent position</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="recent_position3" class="form-control address_input"></textarea>
+                            </div>
+
+                       
+
+
+
+         </div>
+
+
+
+         <!==================Other Relevant Experience============>
+                   <h5 class="parents_info_header" >Other Relevant Experience</h5>
+                    <p class="teach_exp">Please list any other experience you have, including dates, employer name address and phone number, position, salary, supervisor's name and phone number,<br> and reason for leaving.</p>
+
+
+
+         <div class="row comm_row">
+                   
+                   <div class="parent_inside_div">
+                             <label for="" class="">Experience #1</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="previous_exp1" class="form-control address_input" required></textarea>
+                   </div>
+                            <div class="parent_inside_div">
+                             <label for="" class="">Experience #2</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="previous_exp2" class="form-control address_input"></textarea>
+                            </div>
+
+                           <div class="parent_inside_div">
+                             <label for="" class="">Experience #3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="previous_exp3" class="form-control address_input"></textarea>
+                            </div>
+
+                       
+
+
+
+         </div>
+
+
+
+
+
+               <hr>
+
+               <!--------------------Communication Details----------->
+
+               <h5 class="parents_info_header">Communication Details</h5>
+
+               <div class="row comm_row">
+
+                   <div class="col-md-12">
+                       <div class="comm_inside_div">
+                             <label for="" class="">Address</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <textarea name="address" class="form-control address_input"></textarea>
+                        </div>
+                   </div>
+                   
+
+                    <div class="col-md-4">
+                       
+                        <div class="parent_inside_div">
+                             <label for="" class="">Pin Code</label>
+                             <input type="text" name="pin_code" class="form-control father_input" required>
+                        </div>
+                           
+                   </div>
+
+                   <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">City</label>
+                             <input type="text" name="city" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                    <div class="col-md-4" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">State</label>
+                             <input type="text" name="state" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                    <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Mob no</label>
+                             <input type="text" name="mob_no" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+                    <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Email Addres</label>
+                             <input type="text" name="mail" class="form-control father_input" required>
+                        </div>
+                          
+                   </div>
+
+
+               </div>
+
+
+               <hr>
+
+               <!--------------------Interest ----------->
+                   <h5 class="parents_info_header">Interest</h5>
+
+
+                  <div class="row interest_row">
+                      <div class="col-md-6">
+                       
+                        <div class="parent_inside_div">
+                             <label for="" class="">Hobbies</label>
+                            <textarea name="hobbies" class="form-control ins_inputs" required></textarea>
+                        </div>
+                           
+                      </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Skills</label>
+                             <textarea name="skills" class="form-control ins_inputs" required></textarea>
+                       </div>
+                          
+                   </div>
+                      <div class="col-md-6" style="margin-top:20px;">
+                          
+                       <div class="parent_inside_div">
+                             <label for="" class="">Blood Group</label>
+                             <input type="text" name="blood_group" class="form-control ins_input" required>
+                        </div>
+                          
+                   </div>
+                  </div>
+
+                                   <!--------------------Admission Details ----------->
+                        <hr>
+                            <h5 class="parents_info_header">By my electronic submission of this form:</h5>
+
+         <div class="container">
+             <div class="terms">
+                   <ul class="conditions">
+                       <li>I attest that all the information contained in this application is accurate, complete, and true.</li>
+                       <li>I am bound by all elements of the agreement section of the application.</li>
+                       <li>I understand and accept that electronic submission will be considered equivalent to an original hand written signature on a paper copy of the application.</li>
+                   </ul>
+             </div>
+         </div>
+
+          <div class="row interest_row">
+                      <div class="col-md-6">
+                       
+                        <div class="parent_inside_div">
+                            <label for="" class="">Name</label>&nbsp;&nbsp;&nbsp;
+                              <input type="text" name="full_name" class="form-control input_sty" required >
+                        </div>
+                           
+                      </div>
+
+                   <div class="col-md-6" style="margin-bottom:20px;">
+                         
+                       <div class="container con1">
+                                  <img id="file-ip-2-preview" style="width:250px; height:100px; margin-left:-26px; margin-top:-3px;">
+                                     <label for="file-ip-2" class="up_label1"><img src="{% static 'add_teachers/images/upload.png' %}" class="up_img1">Upload Signature</label>
+                                    <input type="file" id="file-ip-2" name="signature" accept="image/*" onchange="showSignature(event);" hidden>
+                       </div>
+                        
+
+                   </div>
+
+                      <input type="submit" name="submit" value="Submit" class="btn btn-primary btn" onclick = "fun()">
+                  
+                   </div>
+          </div>
+       </form>
+     </div>
+
+     <!================ Signature ======>
+
+     <script type="text/javascript">
+  function showSignature(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-2-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+
+     <!==============Profile Image ========>
+<script type="text/javascript">
+  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function fun() {
+alert("{{msg}}");
+}
+</script>
+
+</body>
+</html>

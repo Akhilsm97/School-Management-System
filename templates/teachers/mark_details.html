@@ -1,0 +1,480 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mark Details</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+<a href="/teacher_profile/">Back</a>
+<form method="post" action="/mark_details/">
+    {% csrf_token %}
+   <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="height:260px;width:85%;margin-top:5%;">
+             <div class="row" style="height:150px;padding:20px; margin:30px; width:95%;">
+
+                 <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+
+                      <div class="row">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Exam</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select  name="exam"  class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" required>
+                                <option style="font-weight:bold;color:black;">---Select---</option>
+                                <option value="Periodic Test 1" style="font-weight:bold;">Periodic Test 1</option>
+                                <option value="Periodic Test 2" style="font-weight:bold;">Periodic Test 2</option>
+                                <option value="Mid Term 1" style="font-weight:bold;">Mid Term 1</option>
+                                <option value="Periodic Test 3" style="font-weight:bold;">Periodic Test 3</option>
+                                <option value="Periodic Test 4" style="font-weight:bold;">Periodic Test 4</option>
+                                <option value="Mid Term 2" style="font-weight:bold;">Mid Term 2</option>
+                            </select>
+                        </div>
+                     </div>
+
+                 </div>
+                 <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+                    <div class="row">
+                      <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Class</b></label>
+                      </div>
+                      <div class="col-md-4" style="margin-left:-10px;">
+                          <select name="name" required  class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                 {% for distinct_name in distinct_name %}
+                                    <option value="{{distinct_name.stud_name}}" style="font-weight:bold;">{{distinct_name.stud_name}}</option>
+                                 {% endfor %}
+                          </select>
+                      </div>
+                    </div>
+                 </div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-left:300px;">
+                          <button type="submit" class="btn btn-primary" style="margin-top:15px; margin-left:200px;">Search</button>
+                          <a  class="btn btn-primary" data-toggle="collapse" data-target="#{{exam}}" aria-expanded="false" aria-controls="{{exam}}" style="margin-top:15px; ">Show Details</a>
+                        </div>
+                     </div>
+             </div>
+   </div>
+</form>
+
+
+
+ <div class="content" style="padding:50px; margin-left:110px;width:112%">
+   <div id="accordions">
+     <div id="Periodic Test 1" class="collapse " aria-labelledby="headingOne" data-parent="#accordions" >
+       <div class="card shadow w-75">
+         <div class="card-body">
+             {% for mark in mark%}
+             <div class="row" style=";margin-left:50px; margin-top:50px;">
+                <div class="col-md-4">
+                   Name:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.stud_name}}
+                </div>
+             </div>
+             <div class="row" style=";margin-left:50px; margin-top:10px;">
+                <div class="col-md-4">
+                   Reg No:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.reg_no}}
+                </div>
+                  <div class="col-md-4" style="margin-left:300px;">
+                      <a href="/mark_edit/{{mark.stud_name}}/{{mark.reg_no}}/{{exam}}"><img src="{% static 'add_teachers/images/edit.png' %}" style="width:30px; height:30px;"></a>
+                </div>
+             </div>
+              <div class="row" style=";margin-left:50px; margin-top:10px;">
+                <div class="col-md-4">
+                   Out Of:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.out_of_1}}
+                </div>
+             </div>
+             {% endfor %}
+                <table class="table table-hover table-bordered" style=" empty-cells: hide;">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Subject</th>
+                             <th scope="col">Mark</th>
+                             <th scope="col">%</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        {% for mark in mark %}
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_1}}</td>
+                             <td height="20%">{{mark.english_mark_1}}</td>
+                             <td height="20%">{{english_percentages}}</td>
+
+                        </tr>
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_2}}</td>
+                             <td height="20%">{{mark.malayalam_mark_1}}</td>
+                             <td height="20%">{{malayalam_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_3}}</td>
+                             <td height="20%">{{mark.maths_mark_1}}</td>
+                             <td height="20%">{{maths_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_4}}</td>
+                             <td height="20%">{{mark.comp_mark_1}}</td>
+                             <td height="20%">{{computer_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%" >{{subjects.Subject_5}}</td>
+                             <td height="20%">{{mark.science_mark_1}}</td>
+                             <td height="20%">{{Science_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_6}}</td>
+                             <td height="20%">{{mark.socialscience_mark_1}}</td>
+                             <td height="20%">{{Social_Science_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_7}}</td>
+                             <td height="20%">{{mark.hindi_mark_1}}</td>
+                             <td height="20%">{{hindi_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_8}}</td>
+                             <td height="20%">{{mark.gk_mark_1}}</td>
+                             <td height="20%">{{gk_percentages}}</td>
+                        </tr>
+                          <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_9}}</td>
+                             <td height="20%">{{mark.physics_mark_1}}</td>
+                             <td height="20%">{{Physics_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_10}}</td>
+                             <td height="20%">{{mark.chemistry_mark_1}}</td>
+                             <td height="20%">{{Chemistry_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_11}}</td>
+                             <td height="20%">{{mark.biology_mark_1}}</td>
+                             <td height="20%">{{Biology_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                            <td height="20%" style="font-size:18px; text-align:center;"><b>Result :- &nbsp; {{mark.final_result_1}}</b></td>
+                             <td height="20%" style="font-size:18px; text-align:center;font-weight:bold;"> Percentage :-&nbsp;{{mark.percentage_1}}</td>
+                             <td height="20%">{{biology_percentages}}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+       <!-------------------Search By Name -------------------------->
+
+     <div id="Periodic Test 2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+             {% for mark in mark%}
+             <div class="row" style=";margin-left:50px; margin-top:50px;">
+                <div class="col-md-4">
+                   Name:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.stud_name}}
+                </div>
+             </div>
+             <div class="row" style=";margin-left:50px; margin-top:10px;">
+                <div class="col-md-4">
+                   Reg No:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.reg_no}}
+                </div>
+                <div class="col-md-4" style="margin-left:300px;">
+                      <a href="/mark_edit/{{mark.stud_name}}/{{mark.reg_no}}/{{exam}}"><img src="{% static 'add_teachers/images/edit.png' %}" style="width:30px; height:30px;"></a>
+                </div>
+             </div>
+              <div class="row" style=";margin-left:50px; margin-top:10px;">
+                <div class="col-md-4">
+                   Out Of:
+                </div>
+                  <div class="col-md-4" style="margin-left:-300px;">
+                  {{mark.out_of_2}}
+                </div>
+             </div>
+             {% endfor %}
+                <table class="table table-hover table-bordered" style=" empty-cells: hide;">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Subject</th>
+                             <th scope="col">Mark</th>
+                             <th scope="col">%</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        {% for mark in mark %}
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_2}}</td>
+                             <td height="20%">{{mark.english_mark_2}}</td>
+                             <td height="20%">{{english_percentages}}</td>
+
+                        </tr>
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_2}}</td>
+                             <td height="20%">{{mark.malayalam_mark_2}}</td>
+                             <td height="20%">{{malayalam_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_2}}</td>
+                             <td height="20%">{{mark.maths_mark_2}}</td>
+                             <td height="20%">{{maths_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_4}}</td>
+                             <td height="20%">{{mark.comp_mark_2}}</td>
+                             <td height="20%">{{computer_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%" >{{subjects.Subject_5}}</td>
+                             <td height="20%">{{mark.science_mark_2}}</td>
+                             <td height="20%">{{Science_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_6}}</td>
+                             <td height="20%">{{mark.socialscience_mark_2}}</td>
+                             <td height="20%">{{Social_Science_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_7}}</td>
+                             <td height="20%">{{mark.hindi_mark_2}}</td>
+                             <td height="20%">{{hindi_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_8}}</td>
+                             <td height="20%">{{mark.gk_mark_2}}</td>
+                             <td height="20%">{{gk_percentages}}</td>
+                        </tr>
+                          <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_9}}</td>
+                             <td height="20%">{{mark.physics_mark_2}}</td>
+                             <td height="20%">{{physics_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_10}}</td>
+                             <td height="20%">{{mark.chemistry_mark_2}}</td>
+                             <td height="20%">{{chemistry_percentages}}</td>
+                        </tr>
+                         <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                             <td height="20%">{{subjects.Subject_11}}</td>
+                             <td height="20%">{{mark.biology_mark_2}}</td>
+                             <td height="20%">{{Biology_percentages}}</td>
+                        </tr>
+                        <tr style="font-family: cursive; empty-cells: hide;">
+                             <th scope="row" height="20%">{{dist.id}}</th>
+                            <td height="20%" style="font-size:18px; text-align:center;"><b>Result :- &nbsp; {{mark.final_result_2}}</b></td>
+                             <td height="20%" style="font-size:18px; text-align:center;font-weight:bold;"> Percentage :- &nbsp;{{mark.percentage_2}}</td>
+                             <td height="20%">{{biology_percentages}}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+         </div>
+       </div>
+     </div>
+
+       <div id="Mid Term 1" class="collapse" aria-labelledby="headingThree" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Welcome {{exam}} </h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Working Days</th>
+                             <th scope="col">Present</th>
+                             <th scope="col">Absent</th>
+                             <th scope="col">Half Day</th>
+                             <th scope="col">Attendance %</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist_names.id}}</th>
+                             <td>{{dist_names.stud_name}}</td>
+                             <td>{{dist_names.reg_no}}</td>
+                             <td>{{dist_names.working_days}}</td>
+                             <td>{{dist_names.Present}}</td>
+                             <td>{{dist_names.Absent}}</td>
+                             <td>{{dist_names.Half_day}}</td>
+                             <td>{{dist_names.percent}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+       <div id="Periodic Test 3" class="collapse" aria-labelledby="headingFour" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Welcome {{exam}} </h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Working Days</th>
+                             <th scope="col">Present</th>
+                             <th scope="col">Absent</th>
+                             <th scope="col">Half Day</th>
+                             <th scope="col">Attendance %</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist_names.id}}</th>
+                             <td>{{dist_names.stud_name}}</td>
+                             <td>{{dist_names.reg_no}}</td>
+                             <td>{{dist_names.working_days}}</td>
+                             <td>{{dist_names.Present}}</td>
+                             <td>{{dist_names.Absent}}</td>
+                             <td>{{dist_names.Half_day}}</td>
+                             <td>{{dist_names.percent}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+       <div id="Periodic Test 4" class="collapse" aria-labelledby="headingFive" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Welcome {{exam}} </h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Working Days</th>
+                             <th scope="col">Present</th>
+                             <th scope="col">Absent</th>
+                             <th scope="col">Half Day</th>
+                             <th scope="col">Attendance %</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist_names.id}}</th>
+                             <td>{{dist_names.stud_name}}</td>
+                             <td>{{dist_names.reg_no}}</td>
+                             <td>{{dist_names.working_days}}</td>
+                             <td>{{dist_names.Present}}</td>
+                             <td>{{dist_names.Absent}}</td>
+                             <td>{{dist_names.Half_day}}</td>
+                             <td>{{dist_names.percent}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+
+        <div id="Mid Term 2" class="collapse" aria-labelledby="headingThree" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Welcome {{exam}} </h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Working Days</th>
+                             <th scope="col">Present</th>
+                             <th scope="col">Absent</th>
+                             <th scope="col">Half Day</th>
+                             <th scope="col">Attendance %</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist_names.id}}</th>
+                             <td>{{dist_names.stud_name}}</td>
+                             <td>{{dist_names.reg_no}}</td>
+                             <td>{{dist_names.working_days}}</td>
+                             <td>{{dist_names.Present}}</td>
+                             <td>{{dist_names.Absent}}</td>
+                             <td>{{dist_names.Half_day}}</td>
+                             <td>{{dist_names.percent}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+
+
+   </div>
+ </div>
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

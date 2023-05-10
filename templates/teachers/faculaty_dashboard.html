@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculaty Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/teachers/pagination.css' %}">
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+
+</head>
+    <body>
+    <a href="/faculaty_profile/">Back</a>
+
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" style="border: solid lightgrey 2px; width:350px;margin:20px; border-radius:20px;">
+              {% if portion %}
+                {% for portion in portion %}
+                  {% if portion.status == 'Pending' %}
+                        <div class="inner_div shadow-sm p-3 mb-5" style="border: solid lightgrey 1px;margin-top:15px;border-radius:10px;background:#F0B553A1;color:white;background-image:url({% static 'Faculaty Corner/images/img/leaf.png' %}); background-size: cover;background-position: center;">
+                          <p class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">{{portion.chapter}}</p>
+                          <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Class Required&nbsp;:&nbsp;{{portion.cls_require}}</p>
+                           <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Extra Class Required&nbsp;:&nbsp;{{portion.extra_cls}}</p>
+                            <p style="font-family:Rockwell;font-weight:900; font-size:16px;">Subject Status&nbsp;:&nbsp;{{portion.status}}</p>
+                        </div>
+                  {% elif portion.status == 'Just Started'%}
+                        <div class="inner_div shadow-sm p-3 mb-5" style="border: solid lightgrey 1px;margin-top:15px;border-radius:10px;background:#f7ad96;color:white;background-image:url({% static 'Faculaty Corner/images/img/red_2.png' %}); background-size: cover;background-position: center;">
+                          <p class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">{{portion.chapter}}</p>
+                          <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Class Required&nbsp;:&nbsp;{{portion.cls_require}}</p>
+                           <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Extra Class Required&nbsp;:&nbsp;{{portion.extra_cls}}</p>
+                            <p style="font-family:Rockwell;font-weight:900; font-size:16px;">Subject Status&nbsp;:&nbsp;{{portion.status}}</p>
+                        </div>
+                  {% else %}
+                        <div class="inner_div shadow-sm p-3 mb-5" style="border: solid lightgrey 1px;margin-top:15px;border-radius:10px;background:#7DF0538A;color:black; background-image:url({% static 'Faculaty Corner/images/img/leafss.png' %}); background-size: cover;background-position: center;">
+                          <p class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">{{portion.chapter}}</p>
+                          <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Class Required&nbsp;:&nbsp;{{portion.cls_require}}</p>
+                           <p style="font-family:Rockwell;font-weight:bold; font-size:16px;">Extra Class Required&nbsp;:&nbsp;{{portion.extra_cls}}</p>
+                            <p style="font-family:Rockwell;font-weight:900; font-size:16px;">Subject Status&nbsp;:&nbsp;{{portion.status}}</p>
+                        </div>
+                  {% endif %}
+                {% endfor %}
+              {% else%}
+                <p class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:16px;margin-top:30px;color:red;">{{msg}}</p>
+            {% endif %}
+            </div>
+            <div class="col-md-5 zoom shadow p-3 mb-5 bg-white rounded " style="margin:20px;height:550px; border: solid lightgrey 3px;">
+                <h2 class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:30px;"> Drop Your Messages Here!</h2>
+                <div class="drop_msg shadow-sm p-3 mb-5 bg-white " style="width:150px;margin:30px 10px 10px 180px;border:solid lightgrey 2px; border-radius:20px;transition: transform .2s; ">
+                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="{% static 'add_teachers/images/add.png'%}" style="width:80px; height:80px;margin:10px 10px 10px 20px"></a>
+                </div>
+                <div class="table_view shadow-sm p-3 mb-5 bg-white rounded" style="border:solid lightgrey 2px;">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">#</th>
+                              <th scope="col" class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">Date</th>
+                              <th scope="col" class="text-center" style="font-family:Rockwell;font-weight:bold; font-size:18px;">Message</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           {% if teacher_msg%}
+                                {% for users in users %}
+                                    <tr>
+                                      <th scope="row" style="font-family:Rockwell;font-weight:bold; font-size:15px;">{{users.id}}</th>
+                                      <td style="font-family:Rockwell; font-size:15px;">{{users.message_date}}</td>
+                                      <td style="font-family:Rockwell; font-size:15px;">{{users.message}}</td>
+                                    </tr>
+                                {% endfor %}
+                           {% else %}
+                           <tr>
+                               <td></td>
+                               <td class="text-center" style="font-family:Rockwell; font-size:15px;color:red;font-weight:bold;">{{msgs}}</td>
+                               <td></td>
+                           </tr>
+                           {% endif %}
+
+                          </tbody>
+                        </table>
+
+                                <div class="row" style="width:550px;">
+                                    <div class="col-md-4">
+                                         <b>{{msgw}}</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {% if users.has_other_pages %}
+                                        <ul class="pagination" style="color:black;text-decoration;none;">
+                                            {% if users.has_previous %}
+                                                <li><a href="?page={{ users.previous_page_number }}" style="color:black;text-decoration;none;">«</a></li>
+                                            {% else %}
+                                                <li class="disabled" style="color:black;text-decoration;none;"><span>«</span></li>
+                                            {% endif %}
+                                            {% for i in users.paginator.page_range %}
+                                                {% if users.number == i %}
+                                                    <li class="active" style="color:black;text-decoration;none;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ i }}" style="color:black;text-decoration;none;">{{ i }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if users.has_next %}
+                                                <li><a href="?page={{ users.next_page_number }}" style="color:black;text-decoration;none;">»</a></li>
+                                            {% else %}
+                                                <li class="disabled" style="color:black;text-decoration;none;"><span>»</span></li>
+                                            {% endif %}
+                                        </ul>
+                                    {% endif %}
+                                    </div>
+                                </div>
+
+
+
+
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="margin:20px;">
+
+
+
+
+                <table class="table table-hover" style="font-weight:bold;font-size:14px;height:100px;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Student Name</th>
+                      <th scope="col">Reg No</th>
+                      <th scope="col">View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for table in table %}
+                        <tr>
+                          <td><img src="{{table.profie_pic.url}}" style="width:30px; border-radius:50%;"> &emsp;{{table.username}}</td>
+                          <td>{{table.reg_no}}</td>
+                          <td><a href="#" data-toggle="modal" data-target="#exampleModaled-{{forloop.counter}}"><img src="{% static 'add_teachers/images/edit.jpg' %}" style="width:20px;"></a> </td>
+                        </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+
+            </div>
+        </div>
+      </div>
+
+            <!-----------------------------------Add Message Modal --------------------->
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog  animate__animated animate__zoomIn" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle" style="font-family:Rockwell;font-weight:bold; font-size:20px;">Drop Your Messages Here!</h5>
+              <button type="button" class="close btn btn-primary" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="/faculty_msg/{{teacher_name}}/{{username_user}}/{{cls}}" method="post">
+                  {% csrf_token %}
+                  <label style="font-family:Rockwell;font-weight:bold; font-size:15px;">Write Your Messages Here!</label>
+                  <input type="text" name="message" class="form-control" placeholder="Write Here...." style="border: solid lightgrey 1px;margin-top:10px;">
+                  <button type="submit" name="submit" class="btn btn-primary" style="margin:10px 0px 0px 200px;">Save changes</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!---------------------------- Student View --------------------->
+
+<!-- Modal -->
+   {% for table in table %}
+    {% for marks in marks %}
+<div class="modal fade" id="exampleModaled-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Student Views</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <h2>{{table.username}} </h2>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="shadow p-3 mb-5 bg-white rounded">
+                        <h5 class="text-center" style="margin-bottom: 20px;"> Mark Info</h5>
+                          <h5 class="text-center" style="font-size:19px; font-weight:bold; font-family:Candara;">Periodic Test 1 : &nbsp; {{marks.english_mark_1}} <small> out of 50 </small></h5>
+                          <h5 class="text-center" style="font-size:19px; font-weight:bold; font-family:Candara;">Periodic Test 2 : &nbsp; {{marks.english_mark_2}} <small> out of 50 </small></h5>
+                          <h5 class="text-center" style="font-size:19px; font-weight:bold; font-family:Candara;">Mid Term 1 : &nbsp; {{marks.english_mark_3}} <small> out of 80 </small></h5>
+                          <h5 class="text-center" style="font-size:19px; font-weight:bold; font-family:Candara;">Periodic Test 3 : &nbsp; {{marks.english_mark_4}} <small> out of 50 </small></h5>
+                          <h5 class="text-center" style="font-size:19px; font-weight:bold; font-family:Candara;">Periodic Test 4 : &nbsp; {{marks.english_mark_5}} <small> out of 50 </small></h5>
+
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+    {% endfor%}
+
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+    </body>
+</html>

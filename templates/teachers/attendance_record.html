@@ -1,0 +1,154 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Testing</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+<a href="/teacher_profile/" id="back">Back</a>
+
+   <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="height:260px;width:85%;margin-top:5%;">
+             <div class="row" style="height:150px;padding:20px; margin:30px; width:95%;">
+                 <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+                   <form method="post" action="/attendance_record/">
+                              {% csrf_token %}
+                      <div class="row">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select type="text" name="distinct_date"  class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                               {% for distinct_date in distinct_date %}
+                               <option value="{{distinct_date.date_of_attendance}}" style="font-weight:bold;">{{distinct_date.date_of_attendance}}</option>
+                               {% endfor %}
+                            </select>
+                        </div>
+                     </div>
+                      <div class="row">
+                        <div class="col-md-12" >
+                          <button type="submit" class="btn btn-primary" id="search" style="margin-top:15px; margin-left:200px;">Search</button>
+                          <a  class="btn btn-primary" id="show" data-toggle="collapse" data-target="#submit_date" aria-expanded="false" aria-controls="submit_date" style="margin-top:15px; ">Show Details</a>
+                        </div>
+                     </div>
+                   </form>
+                 </div>
+                 <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+                   <form method="post" action="/attendance_record/">
+                              {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:35px;font-size:23px;"><b>Class</b></label>
+                      </div>
+                      <div class="col-md-4" style="margin-left:-10px;">
+                          <select type="text"  name="distinct_name"  class="form-control" style="margin-top:20px;margin-left:-10px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                 {% for distinct_name in distinct_name %}
+                                    <option value="{{distinct_name.stud_name}}" style="font-weight:bold;">{{distinct_name.stud_name}}</option>
+                                 {% endfor %}
+                          </select>
+                      </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-12" >
+                         <button type="submit" class="btn btn-primary" id="searchs" style="margin-top:15px; margin-left:200px;">Submit Name</button>
+                           <a class="btn btn-primary" data-toggle="collapse" id="shows" data-target="#submit_name" aria-expanded="false" aria-controls="submit_name" style="margin-top:15px;">Show Details</a>
+                        </div>
+                     </div>
+                   </form>
+                 </div>
+
+             </div>
+
+   </div>
+
+ <div class="content" style="padding:50px; margin-left:110px;width:112%">
+   <div id="accordions">
+     <div id="submit_date" class="collapse " aria-labelledby="headingOne" data-parent="#accordions" >
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Div 1</h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Date</th>
+                             <th scope="col">Attendance</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                      {% for dist in dist %}
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist.id}}</th>
+                             <td>{{dist.stud_name}}</td>
+                             <td>{{dist.reg_no}}</td>
+                             <td>{{dist.date_of_attendance}}</td>
+                             <td style="font-weight: bold;">{{dist.Attendence}}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+
+       <!-------------------Search By Name -------------------------->
+
+       <div id="submit_name" class="collapse" aria-labelledby="headingTwo" data-parent="#accordions">
+       <div class="card shadow w-75">
+         <div class="card-body">
+            <h5 class="card-title">Div 2</h5>
+                <table class="table table-hover">
+                    <thead>
+                         <tr style="font-size:22px;font-family: cursive;">
+                             <th scope="col">#</th>
+                             <th scope="col">Name</th>
+                             <th scope="col">Register No</th>
+                             <th scope="col">Working Days</th>
+                             <th scope="col">Present</th>
+                             <th scope="col">Absent</th>
+                             <th scope="col">Half Day</th>
+                             <th scope="col">Attendance %</th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <tr style="font-family: cursive;">
+                             <th scope="row">{{dist_names.id}}</th>
+                             <td>{{dist_names.stud_name}}</td>
+                             <td>{{dist_names.reg_no}}</td>
+                             <td>{{dist_names.working_days}}</td>
+                             <td>{{dist_names.Present}}</td>
+                             <td>{{dist_names.Absent}}</td>
+                             <td>{{dist_names.Half_day}}</td>
+                             <td>{{dist_names.percent}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+.container_style{
+
+  padding:100px 10px 20px 280px;
+}
+.header{
+  margin-top:30px;
+  padding:10px 10px 0px 0px;
+  font-size:18px;
+  font-weight:bold;
+}
+.headers{
+  font-size:18px;
+  margin-left:10px;
+}
+.card_text{
+margin-left:50px;
+margin-top:20px;
+font-size:40px;
+font-weight:bold;
+}
+.view_details{
+background: linear-gradient(to bottom, #99ff33 0%, #ff3300 100%);
+border-radius:10px;
+padding:10px;
+color:black;
+font-weight:bold;
+}
